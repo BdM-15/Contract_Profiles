@@ -1,0 +1,734 @@
+﻿NAICS Code,NAICS U.S. Industry Title,Set-aside
+111110,Soybean Farming,WOSB
+111120,Oilseed (except Soybean) Farming,WOSB
+111130,Dry Pea and Bean Farming,WOSB
+111140,Wheat Farming,WOSB
+111150,Corn Farming,WOSB
+111160,Rice Farming,WOSB
+111191,Oilseed and Grain Combination Farming,WOSB
+111199,All Other Grain Farming,WOSB
+111411,Mushroom Production,EDWOSB
+111419,Other Food Crops Grown Under Cover,EDWOSB
+111421,Nursery and Tree Production,EDWOSB
+111422,Floriculture Production,EDWOSB
+111910,Tobacco Farming,WOSB
+111920,Cotton Farming,WOSB
+111930,Sugarcane Farming,WOSB
+111940,Hay Farming,WOSB
+111991,Sugar Beet Farming,WOSB
+111992,Peanut Farming,WOSB
+111998,All Other Miscellaneous Crop Farming,WOSB
+112210,Hog and Pig Farming,WOSB
+112310,Chicken Egg Production,EDWOSB
+112320,Broilers and Other Meat Type Chicken Production,EDWOSB
+112330,Turkey Production,EDWOSB
+112340,Poultry Hatcheries,EDWOSB
+112390,Other Poultry Production,EDWOSB
+112910,Apiculture,WOSB
+112920,Horses and Other Equine Production,WOSB
+112930,Fur-Bearing Animal and Rabbit Production,WOSB
+112990,All Other Animal Production,WOSB
+113210,Forest Nurseries and Gathering of Forest Products,WOSB
+114210,Hunting and Trapping,WOSB
+115111,Cotton Ginning,WOSB
+115112,"Soil Preparation, Planting, and Cultivating",WOSB
+115113,"Crop Harvesting, Primarily by Machine",WOSB
+115114,Postharvest Crop Activities (except Cotton Ginning),WOSB
+115115,Farm Labor Contractors and Crew Leaders,WOSB
+115116,Farm Management Services,WOSB
+115210,Support Activities for Animal Production,WOSB
+115310,Support Activities for Forestry,EDWOSB
+211120,Crude Petroleum Extraction ,WOSB
+211130,Natural Gas Extraction,WOSB
+212311,Dimension Stone Mining and Quarrying,EDWOSB
+212312,Crushed and Broken Limestone Mining and Quarrying,EDWOSB
+212313,Crushed and Broken Granite Mining and Quarrying,EDWOSB
+212319,Other Crushed and Broken Stone Mining and Quarrying,EDWOSB
+212321,Construction Sand and Gravel Mining,EDWOSB
+212322,Industrial Sand Mining,EDWOSB
+212323,"Kaolin, Clay, and Ceramic and Refractory Minerals Mining",EDWOSB
+212390,Other Nonmetallic Mineral Mining and Quarrying,EDWOSB
+213111,Drilling Oil and Gas Wells,WOSB
+213112,Support Activities for Oil and Gas Operations,WOSB
+213113,Support Activities for Coal Mining,WOSB
+213114,Support Activities for Metal Mining,WOSB
+213115,Support Activities for Nonmetallic Minerals (except Fuels) Mining,WOSB
+221111,Hydroelectric Power Generation,WOSB
+221112,Fossil Fuel Electric Power Generation,WOSB
+221113,Nuclear Electric Power Generation,WOSB
+221114,Solar Electric Power Generation,WOSB
+221115,Wind Electric Power Generation,WOSB
+221116,Geothermal Electric Power Generation,WOSB
+221117,Biomass Electric Power Generation,WOSB
+221118,Other Electric Power Generation,WOSB
+221121,Electric Bulk Power Transmission and Control,WOSB
+221122,Electric Power Distribution,WOSB
+221210,Natural Gas Distribution,WOSB
+221310,Water Supply and Irrigation Systems,WOSB
+221320,Sewage Treatment Facilities,WOSB
+221330,Steam and Air-Conditioning Supply,WOSB
+236115,New Single-Family Housing Construction (except For-Sale Builders),WOSB
+236116,New Multifamily Housing Construction (except For-Sale Builders),WOSB
+236117,New Housing For-Sale Builders,WOSB
+236118,Residential Remodelers,WOSB
+236210,Industrial Building Construction,WOSB
+236220,Commercial and Institutional Building Construction,WOSB
+237110,Water and Sewer Line and Related Structures Construction,WOSB
+237120,Oil and Gas Pipeline and Related Structures Construction,WOSB
+237130,Power and Communication Line and Related Structures Construction,WOSB
+237310,"Highway, Street, and Bridge Construction",WOSB
+237990,Other Heavy and Civil Engineering Construction,WOSB
+238310,Drywall and Insulation Contractors,EDWOSB
+238320,Painting and Wall Covering Contractors,EDWOSB
+238330,Flooring Contractors,EDWOSB
+238340,Tile and Terrazzo Contractors,EDWOSB
+238350,Finish Carpentry Contractors,EDWOSB
+238390,Other Building Finishing Contractors,EDWOSB
+238910,Site Preparation Contractors,EDWOSB
+238990,All Other Specialty Trade Contractors,EDWOSB
+311111,Dog and Cat Food Manufacturing,EDWOSB
+311119,Other Animal Food Manufacturing,EDWOSB
+311211,Flour Milling,WOSB
+311212,Rice Milling,WOSB
+311213,Malt Manufacturing,WOSB
+311221,Wet Corn Milling and Starch Manufacturing,WOSB
+311224,Soybean and Other Oilseed Processing,WOSB
+311225,Fats and Oils Refining and Blending,WOSB
+311230,Breakfast Cereal Manufacturing,WOSB
+311313,Beet Sugar Manufacturing,WOSB
+311314,Cane Sugar Manufacturing,WOSB
+311340,Nonchocolate Confectionery Manufacturing,WOSB
+311351,Chocolate and Confectionery Manufacturing from Cacao Beans,WOSB
+311352,Confectionery Manufacturing from Purchased Chocolate,WOSB
+311411,"Frozen Fruit, Juice, and Vegetable Manufacturing",WOSB
+311412,Frozen Specialty Food Manufacturing,WOSB
+311421,Fruit and Vegetable Canning,WOSB
+311422,Specialty Canning,WOSB
+311423,Dried and Dehydrated Food Manufacturing,WOSB
+311511,Fluid Milk Manufacturing,WOSB
+311512,Creamery Butter Manufacturing,WOSB
+311513,Cheese Manufacturing,WOSB
+311514,"Dry, Condensed, and Evaporated Dairy Product Manufacturing",WOSB
+311520,Ice Cream and Frozen Dessert Manufacturing,WOSB
+311611,Animal (except Poultry) Slaughtering,EDWOSB
+311612,Meat Processed from Carcasses,EDWOSB
+311613,Rendering and Meat Byproduct Processing,EDWOSB
+311615,Poultry Processing,EDWOSB
+311710,Seafood Product Preparation and Packaging,WOSB
+311811,Retail Bakeries,WOSB
+311812,Commercial Bakeries,WOSB
+311813,"Frozen Cakes, Pies, and Other Pastries Manufacturing",WOSB
+311821,Cookie and Cracker Manufacturing,WOSB
+311824,"Dry Pasta, Dough, and Flour Mixes Manufacturing from Purchased Flour",WOSB
+311830,Tortilla Manufacturing,WOSB
+311911,Roasted Nuts and Peanut Butter Manufacturing,WOSB
+311919,Other Snack Food Manufacturing,WOSB
+311920,Coffee and Tea Manufacturing,WOSB
+311930,Flavoring Syrup and Concentrate Manufacturing,WOSB
+311941,"Mayonnaise, Dressing, and Other Prepared Sauce Manufacturing",WOSB
+311942,Spice and Extract Manufacturing,WOSB
+311991,Perishable Prepared Food Manufacturing,WOSB
+311999,All Other Miscellaneous Food Manufacturing,WOSB
+312111,Soft Drink Manufacturing,WOSB
+312112,Bottled Water Manufacturing,WOSB
+312113,Ice Manufacturing,WOSB
+312120,Breweries,WOSB
+312130,Wineries,WOSB
+312140,Distilleries,WOSB
+313110,"Fiber, Yarn, and Thread Mills",WOSB
+313210,Broadwoven Fabric Mills,WOSB
+313220,Narrow Fabric Mills and Schiffli Machine Embroidery,WOSB
+313230,Nonwoven Fabric Mills,WOSB
+313240,Knit Fabric Mills,WOSB
+313310,Textile and Fabric Finishing Mills,WOSB
+313320,Fabric Coating Mills,WOSB
+314110,Carpet and Rug Mills,EDWOSB
+314120,Curtain and Linen Mills,EDWOSB
+314910,Textile Bag and Canvas Mills,WOSB
+314994,"Rope, Cordage, Twine, Tire Cord, and Tire Fabric Mills",WOSB
+314999,All Other Miscellaneous Textile Product Mills,WOSB
+315120,Apparel Knitting Mills,WOSB
+315210,Cut and Sew Apparel Contractors,WOSB
+315250,Cut and Sew Apparel Manufacturing (except Contractors),WOSB
+315990,Apparel Accessories and Other Apparel Manufacturing,WOSB
+316110,Leather and Hide Tanning and Finishing,WOSB
+316210,Footwear Manufacturing,WOSB
+316990,Other Leather and Allied Product Manufacturing,WOSB
+321113,Sawmills,EDWOSB
+321114,Wood Preservation,EDWOSB
+321211,Hardwood Veneer and Plywood Manufacturing,WOSB
+321212,Softwood Veneer and Plywood Manufacturing,WOSB
+321215,Engineered Wood Member Manufacturing,WOSB
+321219,Reconstituted Wood Product Manufacturing,WOSB
+321911,Wood Window and Door Manufacturing,WOSB
+321912,"Cut Stock, Resawing Lumber, and Planing",WOSB
+321918,Other Millwork (including Flooring),WOSB
+321920,Wood Container and Pallet Manufacturing,WOSB
+321991,Manufactured Home (Mobile Home) Manufacturing,WOSB
+321992,Prefabricated Wood Building Manufacturing,WOSB
+321999,All Other Miscellaneous Wood Product Manufacturing,WOSB
+322110,Pulp Mills,WOSB
+322120,Paper Mills,WOSB
+322130,Paperboard Mills,WOSB
+322211,Corrugated and Solid Fiber Box Manufacturing,WOSB
+322212,Folding Paperboard Box Manufacturing,WOSB
+322219,Other Paperboard Container Manufacturing,WOSB
+322220,Paper Bag and Coated and Treated Paper Manufacturing,WOSB
+322230,Stationery Product Manufacturing,WOSB
+322291,Sanitary Paper Product Manufacturing,WOSB
+322299,All Other Converted Paper Product Manufacturing,WOSB
+323111,Commercial Printing (except Screen and Books),WOSB
+323113,Commercial Screen Printing,WOSB
+323117,Books Printing,WOSB
+323120,Support Activities for Printing,WOSB
+324110,Petroleum Refineries,WOSB
+324121,Asphalt Paving Mixture and Block Manufacturing,WOSB
+324122,Asphalt Shingle and Coating Materials Manufacturing,WOSB
+324191,Petroleum Lubricating Oil and Grease Manufacturing,WOSB
+324199,All Other Petroleum and Coal Products Manufacturing,WOSB
+325110,Petrochemical Manufacturing,WOSB
+325120,Industrial Gas Manufacturing,WOSB
+325130,Synthetic Dye and Pigment Manufacturing,WOSB
+325180,Other Basic Inorganic Chemical Manufacturing,WOSB
+325193,Ethyl Alcohol Manufacturing,WOSB
+325194,"Cyclic Crude, Intermediate, and Gum and Wood Chemical Manufacturing",WOSB
+325199,All Other Basic Organic Chemical Manufacturing,WOSB
+325211,Plastics Material and Resin Manufacturing,WOSB
+325212,Synthetic Rubber Manufacturing,WOSB
+325220,Artificial and Synthetic Fibers and Filaments Manufacturing,WOSB
+325311,Nitrogenous Fertilizer Manufacturing,WOSB
+325312,Phosphatic Fertilizer Manufacturing,WOSB
+325314,Fertilizer (Mixing Only) Manufacturing,WOSB
+325315,Compost Manufacturing,WOSB
+325320,Pesticide and Other Agricultural Chemical Manufacturing,WOSB
+325411,Medicinal and Botanical Manufacturing,WOSB
+325412,Pharmaceutical Preparation Manufacturing,WOSB
+325413,In-Vitro Diagnostic Substance Manufacturing,WOSB
+325414,Biological Product (except Diagnostic) Manufacturing,WOSB
+325510,Paint and Coating Manufacturing,WOSB
+325520,Adhesive Manufacturing,WOSB
+325611,Soap and Other Detergent Manufacturing,WOSB
+325612,Polish and Other Sanitation Good Manufacturing,WOSB
+325613,Surface Active Agent Manufacturing,WOSB
+325620,Toilet Preparation Manufacturing,WOSB
+325910,Printing Ink Manufacturing,WOSB
+325920,Explosives Manufacturing,WOSB
+325991,Custom Compounding of Purchased Resins,WOSB
+325992,"Photographic Film, Paper, Plate, Chemical, and Copy Toner Manufacturing",WOSB
+325998,All Other Miscellaneous Chemical Product and Preparation Manufacturing,WOSB
+326211,Tire Manufacturing (except Retreading),WOSB
+326212,Tire Retreading,WOSB
+326220,Rubber and Plastics Hoses and Belting Manufacturing,WOSB
+326291,Rubber Product Manufacturing for Mechanical Use,WOSB
+326299,All Other Rubber Product Manufacturing,WOSB
+327110,"Pottery, Ceramics, and Plumbing Fixture Manufacturing",WOSB
+327120,Clay Building Material and Refractories Manufacturing,WOSB
+327211,Flat Glass Manufacturing,WOSB
+327212,Other Pressed and Blown Glass and Glassware Manufacturing,WOSB
+327213,Glass Container Manufacturing,WOSB
+327215,Glass Product Manufacturing Made of Purchased Glass,WOSB
+327310,Cement Manufacturing,WOSB
+327320,Ready-Mix Concrete Manufacturing,WOSB
+327331,Concrete Block and Brick Manufacturing,WOSB
+327332,Concrete Pipe Manufacturing,WOSB
+327390,Other Concrete Product Manufacturing,WOSB
+327410,Lime Manufacturing,EDWOSB
+327420,Gypsum Product Manufacturing,EDWOSB
+327910,Abrasive Product Manufacturing,WOSB
+327991,Cut Stone and Stone Product Manufacturing,WOSB
+327992,Ground or Treated Mineral and Earth Manufacturing,WOSB
+327993,Mineral Wool Manufacturing,WOSB
+327999,All Other Miscellaneous Nonmetallic Mineral Product Manufacturing,WOSB
+331110,Iron and Steel Mills and Ferroalloy Manufacturing,WOSB
+331210,Iron and Steel Pipe and Tube Manufacturing from Purchased Steel,EDWOSB
+331221,Rolled Steel Shape Manufacturing,EDWOSB
+331222,Steel Wire Drawing,EDWOSB
+331313,Alumina Refining and Primary Aluminum Production,WOSB
+331314,Secondary Smelting and Alloying of Aluminum,WOSB
+331315,"Aluminum Sheet, Plate, and Foil Manufacturing",WOSB
+331318,"Other Aluminum Rolling, Drawing, and Extruding",WOSB
+331410,Nonferrous Metal (except Aluminum) Smelting and Refining,WOSB
+331420,"Copper Rolling, Drawing, Extruding, and Alloying",WOSB
+331491,"Nonferrous Metal (except Copper and Aluminum) Rolling, Drawing, and Extruding",WOSB
+331492,"Secondary Smelting, Refining, and Alloying of Nonferrous Metal (except Copper and Aluminum)",WOSB
+331511,Iron Foundries,WOSB
+331512,Steel Investment Foundries,WOSB
+331513,Steel Foundries (except Investment),WOSB
+331523,Nonferrous Metal Die-Casting Foundries,WOSB
+331524,Aluminum Foundries (except Die-Casting),WOSB
+331529,Other Nonferrous Metal Foundries (except Die-Casting),WOSB
+332111,Iron and Steel Forging,WOSB
+332112,Nonferrous Forging,WOSB
+332114,Custom Roll Forming,WOSB
+332117,Powder Metallurgy Part Manufacturing,WOSB
+332119,"Metal Crown, Closure, and Other Metal Stamping (except Automotive)",WOSB
+332215,"Metal Kitchen Cookware, Utensil, Cutlery, and Flatware (except Precious) Manufacturing",WOSB
+332216,Saw Blade and Handtool Manufacturing,WOSB
+332311,Prefabricated Metal Building and Component Manufacturing,WOSB
+332312,Fabricated Structural Metal Manufacturing,WOSB
+332313,Plate Work Manufacturing,WOSB
+332321,Metal Window and Door Manufacturing,WOSB
+332322,Sheet Metal Work Manufacturing,WOSB
+332323,Ornamental and Architectural Metal Work Manufacturing,WOSB
+332410,Power Boiler and Heat Exchanger Manufacturing,WOSB
+332420,Metal Tank (Heavy Gauge) Manufacturing,WOSB
+332431,Metal Can Manufacturing,WOSB
+332439,Other Metal Container Manufacturing,WOSB
+332510,Hardware Manufacturing,WOSB
+332613,Spring Manufacturing,EDWOSB
+332618,Other Fabricated Wire Product Manufacturing,EDWOSB
+332710,Machine Shops,EDWOSB
+332721,Precision Turned Product Manufacturing,EDWOSB
+332722,"Bolt, Nut, Screw, Rivet, and Washer Manufacturing",EDWOSB
+332811,Metal Heat Treating,EDWOSB
+332812,"Metal Coating, Engraving (except Jewelry and Silverware), and Allied Services to Manufacturers",EDWOSB
+332813,"Electroplating, Plating, Polishing, Anodizing, and Coloring",EDWOSB
+332911,Industrial Valve Manufacturing,WOSB
+332912,Fluid Power Valve and Hose Fitting Manufacturing,WOSB
+332913,Plumbing Fixture Fitting and Trim Manufacturing,WOSB
+332919,Other Metal Valve and Pipe Fitting Manufacturing,WOSB
+332991,Ball and Roller Bearing Manufacturing,WOSB
+332992,Small Arms Ammunition Manufacturing,WOSB
+332993,Ammunition (except Small Arms) Manufacturing,WOSB
+332994,"Small Arms, Ordnance, and Ordnance Accessories Manufacturing",WOSB
+332996,Fabricated Pipe and Pipe Fitting Manufacturing,WOSB
+332999,All Other Miscellaneous Fabricated Metal Product Manufacturing,WOSB
+333111,Farm Machinery and Equipment Manufacturing,WOSB
+333112,Lawn and Garden Tractor and Home Lawn and Garden Equipment Manufacturing,WOSB
+333120,Construction Machinery Manufacturing,WOSB
+333131,Mining Machinery and Equipment Manufacturing,WOSB
+333132,Oil and Gas Field Machinery and Equipment Manufacturing,WOSB
+333241,Food Product Machinery Manufacturing,EDWOSB
+333242,Semiconductor Machinery Manufacturing,EDWOSB
+333243,"Sawmill, Woodworking, and Paper Machinery Manufacturing",EDWOSB
+333248,All Other Industrial Machinery Manufacturing,EDWOSB
+333310,Commercial and Service Industry Machinery Manufacturing,WOSB
+333413,Industrial and Commercial Fan and Blower and Air Purification Equipment Manufacturing,WOSB
+333414,Heating Equipment (except Warm Air Furnaces) Manufacturing,WOSB
+333415,Air-Conditioning and Warm Air Heating Equipment and Commercial and Industrial Refrigeration Equipment Manufacturing,WOSB
+333511,Industrial Mold Manufacturing,WOSB
+333514,"Special Die and Tool, Die Set, Jig, and Fixture Manufacturing",WOSB
+333515,Cutting Tool and Machine Tool Accessory Manufacturing,WOSB
+333517,Machine Tool Manufacturing,WOSB
+333519,Rolling Mill and Other Metalworking Machinery Manufacturing,WOSB
+333611,Turbine and Turbine Generator Set Units Manufacturing,WOSB
+333612,"Speed Changer, Industrial High-Speed Drive, and Gear Manufacturing",WOSB
+333613,Mechanical Power Transmission Equipment Manufacturing,WOSB
+333618,Other Engine Equipment Manufacturing,WOSB
+333912,Air and Gas Compressor Manufacturing,WOSB
+333914,"Measuring, Dispensing, and Other Pumping Equipment Manufacturing",WOSB
+333921,Elevator and Moving Stairway Manufacturing,WOSB
+333922,Conveyor and Conveying Equipment Manufacturing,WOSB
+333923,"Overhead Traveling Crane, Hoist, and Monorail System Manufacturing",WOSB
+333924,"Industrial Truck, Tractor, Trailer, and Stacker Machinery Manufacturing",WOSB
+333991,Power-Driven Handtool Manufacturing,WOSB
+333992,Welding and Soldering Equipment Manufacturing,WOSB
+333993,Packaging Machinery Manufacturing,WOSB
+333994,Industrial Process Furnace and Oven Manufacturing,WOSB
+333995,Fluid Power Cylinder and Actuator Manufacturing,WOSB
+333996,Fluid Power Pump and Motor Manufacturing,WOSB
+333998,All Other Miscellaneous General Purpose Machinery Manufacturing,WOSB
+334111,Electronic Computer Manufacturing,WOSB
+334112,Computer Storage Device Manufacturing,WOSB
+334118,Computer Terminal and Other Computer Peripheral Equipment Manufacturing,WOSB
+334210,Telephone Apparatus Manufacturing,WOSB
+334220,Radio and Television Broadcasting and Wireless Communications Equipment Manufacturing,WOSB
+334290,Other Communications Equipment Manufacturing,WOSB
+334310,Audio and Video Equipment Manufacturing,EDWOSB
+334412,Bare Printed Circuit Board Manufacturing,WOSB
+334413,Semiconductor and Related Device Manufacturing,WOSB
+334416,"Capacitor, Resistor, Coil, Transformer, and Other Inductor Manufacturing",WOSB
+334417,Electronic Connector Manufacturing,WOSB
+334418,Printed Circuit Assembly (Electronic Assembly) Manufacturing,WOSB
+334419,Other Electronic Component Manufacturing,WOSB
+334510,Electromedical and Electrotherapeutic Apparatus Manufacturing,WOSB
+334511,"Search, Detection, Navigation, Guidance, Aeronautical, and Nautical System and Instrument Manufacturing",WOSB
+334512,"Automatic Environmental Control Manufacturing for Residential, Commercial, and Appliance Use",WOSB
+334513,"Instruments and Related Products Manufacturing for Measuring, Displaying, and Controlling Industrial Process Variables",WOSB
+334514,Totalizing Fluid Meter and Counting Device Manufacturing,WOSB
+334515,Instrument Manufacturing for Measuring and Testing Electricity and Electrical Signals,WOSB
+334516,Analytical Laboratory Instrument Manufacturing,WOSB
+334517,Irradiation Apparatus Manufacturing,WOSB
+334519,Other Measuring and Controlling Device Manufacturing,WOSB
+334610,Manufacturing and Reproducing Magnetic and Optical Media,WOSB
+335131,Residential Electric Lighting Fixture Manufacturing,EDWOSB
+335132,"Commercial, Industrial, and Institutional Electric Lighting Fixture Manufacturing",EDWOSB
+335139,Electric Lamp Bulb and Other Lighting Equipment Manufacturing,EDWOSB
+335311,"Power, Distribution, and Specialty Transformer Manufacturing",EDWOSB
+335312,Motor and Generator Manufacturing,EDWOSB
+335313,Switchgear and Switchboard Apparatus Manufacturing,EDWOSB
+335314,Relay and Industrial Control Manufacturing,EDWOSB
+335910,Battery Manufacturing,WOSB
+335921,Fiber Optic Cable Manufacturing,WOSB
+335929,Other Communication and Energy Wire Manufacturing,WOSB
+335931,Current-Carrying Wiring Device Manufacturing,WOSB
+335932,Noncurrent-Carrying Wiring Device Manufacturing,WOSB
+335991,Carbon and Graphite Product Manufacturing,WOSB
+335999,All Other Miscellaneous Electrical Equipment and Component Manufacturing,WOSB
+336110,Automobile and Light Duty Motor Vehicle Manufacturing,WOSB
+336120,Heavy Duty Truck Manufacturing,WOSB
+336211,Motor Vehicle Body Manufacturing,WOSB
+336212,Truck Trailer Manufacturing,WOSB
+336213,Motor Home Manufacturing,WOSB
+336214,Travel Trailer and Camper Manufacturing,WOSB
+336310,Motor Vehicle Gasoline Engine and Engine Parts Manufacturing,WOSB
+336320,Motor Vehicle Electrical and Electronic Equipment Manufacturing,WOSB
+336330,Motor Vehicle Steering and Suspension Components (except Spring) Manufacturing,WOSB
+336340,Motor Vehicle Brake System Manufacturing,WOSB
+336350,Motor Vehicle Transmission and Power Train Parts Manufacturing,WOSB
+336360,Motor Vehicle Seating and Interior Trim Manufacturing,WOSB
+336370,Motor Vehicle Metal Stamping,WOSB
+336390,Other Motor Vehicle Parts Manufacturing,WOSB
+336411,Aircraft Manufacturing,WOSB
+336412,Aircraft Engine and Engine Parts Manufacturing,WOSB
+336413,Other Aircraft Parts and Auxiliary Equipment Manufacturing,WOSB
+336414,Guided Missile and Space Vehicle Manufacturing,WOSB
+336415,Guided Missile and Space Vehicle Propulsion Unit and Propulsion Unit Parts Manufacturing,WOSB
+336419,Other Guided Missile and Space Vehicle Parts and Auxiliary Equipment Manufacturing,WOSB
+336611,Ship Building and Repairing,WOSB
+336612,Boat Building,WOSB
+336991,"Motorcycle, Bicycle, and Parts Manufacturing",WOSB
+336992,"Military Armored Vehicle, Tank, and Tank Component Manufacturing",WOSB
+336999,All Other Transportation Equipment Manufacturing,WOSB
+337110,Wood Kitchen Cabinet and Countertop Manufacturing,WOSB
+337121,Upholstered Household Furniture Manufacturing,WOSB
+337122,Nonupholstered Wood Household Furniture Manufacturing,WOSB
+337126,Household Furniture (except Wood and Upholstered) Manufacturing,WOSB
+337127,Institutional Furniture Manufacturing,WOSB
+337211,Wood Office Furniture Manufacturing,WOSB
+337212,Custom Architectural Woodwork and Millwork Manufacturing,WOSB
+337214,Office Furniture (except Wood) Manufacturing,WOSB
+337215,"Showcase, Partition, Shelving, and Locker Manufacturing",WOSB
+337910,Mattress Manufacturing,EDWOSB
+337920,Blind and Shade Manufacturing,EDWOSB
+339112,Surgical and Medical Instrument Manufacturing,WOSB
+339113,Surgical Appliance and Supplies Manufacturing,WOSB
+339114,Dental Equipment and Supplies Manufacturing,WOSB
+339115,Ophthalmic Goods Manufacturing,WOSB
+339116,Dental Laboratories,WOSB
+339910,Jewelry and Silverware Manufacturing,WOSB
+339920,Sporting and Athletic Goods Manufacturing,WOSB
+339930,"Doll, Toy, and Game Manufacturing",WOSB
+339940,Office Supplies (except Paper) Manufacturing,WOSB
+339950,Sign Manufacturing,WOSB
+339991,"Gasket, Packing, and Sealing Device Manufacturing",WOSB
+339992,Musical Instrument Manufacturing,WOSB
+339993,"Fastener, Button, Needle, and Pin Manufacturing",WOSB
+339994,"Broom, Brush, and Mop Manufacturing",WOSB
+339995,Burial Casket Manufacturing,WOSB
+339999,All Other Miscellaneous Manufacturing,WOSB
+481111,Scheduled Passenger Air Transportation,WOSB
+481112,Scheduled Freight Air Transportation,WOSB
+481211,Nonscheduled Chartered Passenger Air Transportation,WOSB
+481212,Nonscheduled Chartered Freight Air Transportation,WOSB
+481219,Other Nonscheduled Air Transportation,WOSB
+483111,Deep Sea Freight Transportation,WOSB
+483112,Deep Sea Passenger Transportation,WOSB
+483113,Coastal and Great Lakes Freight Transportation,WOSB
+483114,Coastal and Great Lakes Passenger Transportation,WOSB
+483211,Inland Water Freight Transportation,WOSB
+483212,Inland Water Passenger Transportation,WOSB
+484110,"General Freight Trucking, Local",WOSB
+484121,"General Freight Trucking, Long-Distance, Truckload",WOSB
+484122,"General Freight Trucking, Long-Distance, Less Than Truckload",WOSB
+484210,Used Household and Office Goods Moving,WOSB
+484220,"Specialized Freight (except Used Goods) Trucking, Local",WOSB
+484230,"Specialized Freight (except Used Goods) Trucking, Long-Distance",WOSB
+485111,Mixed Mode Transit Systems,WOSB
+485112,Commuter Rail Systems,WOSB
+485113,Bus and Other Motor Vehicle Transit Systems,WOSB
+485119,Other Urban Transit Systems,WOSB
+485210,Interurban and Rural Bus Transportation,WOSB
+485310,Taxi and Ridesharing Services,WOSB
+485320,Limousine Service,WOSB
+485510,Charter Bus Industry,EDWOSB
+485991,Special Needs Transportation,WOSB
+485999,All Other Transit and Ground Passenger Transportation,WOSB
+488111,Air Traffic Control,WOSB
+488119,Other Airport Operations,WOSB
+488190,Other Support Activities for Air Transportation,WOSB
+488210,Support Activities for Rail Transportation,EDWOSB
+488310,Port and Harbor Operations,WOSB
+488320,Marine Cargo Handling,WOSB
+488330,Navigational Services to Shipping,WOSB
+488390,Other Support Activities for Water Transportation,WOSB
+488410,Motor Vehicle Towing,WOSB
+488490,Other Support Activities for Road Transportation,WOSB
+488510,Freight Transportation Arrangement,WOSB
+488991,Packing and Crating,WOSB
+488999,All Other Support Activities for Transportation,WOSB
+491110,Postal Service,WOSB
+492110,Couriers and Express Delivery Services,WOSB
+492210,Local Messengers and Local Delivery,WOSB
+493110,General Warehousing and Storage,WOSB
+493120,Refrigerated Warehousing and Storage,WOSB
+493130,Farm Product Warehousing and Storage,WOSB
+493190,Other Warehousing and Storage,WOSB
+512110,Motion Picture and Video Production,EDWOSB
+512120,Motion Picture and Video Distribution,EDWOSB
+512131,Motion Picture Theaters (except Drive-Ins),EDWOSB
+512132,Drive-In Motion Picture Theaters,EDWOSB
+512191,Teleproduction and Other Postproduction Services,EDWOSB
+512199,Other Motion Picture and Video Industries,EDWOSB
+512230,Music Publishers,WOSB
+512240,Sound Recording Studios,WOSB
+512250,Record Production and Distribution,WOSB
+512290,Other Sound Recording Industries,WOSB
+513110,Newspaper Publishers,WOSB
+513120,Periodical Publishers,WOSB
+513130,Book Publishers,WOSB
+513140,Directory and Mailing List Publishers,WOSB
+513191,Greeting Card Publishers,WOSB
+513199,All Other Publishers,WOSB
+513210,Software Publishers,WOSB
+516110,Radio Broadcasting Stations,WOSB
+516120,Television Broadcasting Stations,WOSB
+516210,"Media Streaming Distribution Services, Social Networks, and Other Media Networks and Content Providers",WOSB
+517111,Wired Telecommunications Carriers,WOSB
+517112,Wireless Telecommunications Carriers (except Satellite),WOSB
+517121,Telecommunications Resellers,WOSB
+517122,Agents for Wireless Telecommunications Services,WOSB
+517410,Satellite Telecommunications,WOSB
+517810,All Other Telecommunications,WOSB
+518210,"Computing Infrastructure Providers, Data Processing, Web Hosting, and Related Services",WOSB
+519210,Libraries and Archives,WOSB
+519290,Web Search Portals and All Other Information Services,WOSB
+522310,Mortgage and Nonmortgage Loan Brokers,WOSB
+522320,"Financial Transactions Processing, Reserve, and Clearinghouse Activities",WOSB
+522390,Other Activities Related to Credit Intermediation,WOSB
+523150,Investment Banking and Securities Intermediation,WOSB
+523160,Commodity Contracts Intermediation,WOSB
+523910,Miscellaneous Intermediation,WOSB
+523940,Portfolio Management and Investment Advice,WOSB
+523991,"Trust, Fiduciary, and Custody Activities",WOSB
+523999,Miscellaneous Financial Investment Activities,WOSB
+524113,Direct Life Insurance Carriers,WOSB
+524114,Direct Health and Medical Insurance Carriers,WOSB
+524126,Direct Property and Casualty Insurance Carriers,WOSB
+524127,Direct Title Insurance Carriers,WOSB
+524128,"Other Direct Insurance (except Life, Health, and Medical) Carriers",WOSB
+524130,Reinsurance Carriers,WOSB
+524210,Insurance Agencies and Brokerages,WOSB
+524291,Claims Adjusting,WOSB
+524292,Pharmacy Benefit Management and Other Third Party Administration of Insurance and Pension Funds,WOSB
+524298,All Other Insurance Related Activities,WOSB
+525110,Pension Funds,WOSB
+525120,Health and Welfare Funds,WOSB
+525190,Other Insurance Funds,WOSB
+531210,Offices of Real Estate Agents and Brokers,WOSB
+531311,Residential Property Managers,WOSB
+531312,Nonresidential Property Managers,WOSB
+531320,Offices of Real Estate Appraisers,WOSB
+531390,Other Activities Related to Real Estate,WOSB
+532111,Passenger Car Rental,WOSB
+532112,Passenger Car Leasing,WOSB
+532120,"Truck, Utility Trailer, and RV (Recreational Vehicle) Rental and Leasing",WOSB
+532210,Consumer Electronics and Appliances Rental,WOSB
+532281,Formal Wear and Costume Rental,WOSB
+532282,Video Tape and Disc Rental,WOSB
+532283,Home Health Equipment Rental,WOSB
+532284,Recreational Goods Rental,WOSB
+532289,All Other Consumer Goods Rental,WOSB
+532310,General Rental Centers,WOSB
+532411,"Commercial Air, Rail, and Water Transportation Equipment Rental and Leasing",WOSB
+532412,"Construction, Mining, and Forestry Machinery and Equipment Rental and Leasing",WOSB
+532420,Office Machinery and Equipment Rental and Leasing,WOSB
+532490,Other Commercial and Industrial Machinery and Equipment Rental and Leasing,WOSB
+541110,Offices of Lawyers,WOSB
+541120,Offices of Notaries,WOSB
+541191,Title Abstract and Settlement Offices,WOSB
+541199,All Other Legal Services,WOSB
+541211,Offices of Certified Public Accountants,WOSB
+541213,Tax Preparation Services,WOSB
+541214,Payroll Services,WOSB
+541219,Other Accounting Services,WOSB
+541310,Architectural Services,WOSB
+541320,Landscape Architectural Services,WOSB
+541330,Engineering Services,WOSB
+541340,Drafting Services,WOSB
+541350,Building Inspection Services,WOSB
+541360,Geophysical Surveying and Mapping Services,WOSB
+541370,Surveying and Mapping (except Geophysical) Services,WOSB
+541380,Testing Laboratories and Services,WOSB
+541511,Custom Computer Programming Services,WOSB
+541512,Computer Systems Design Services,WOSB
+541513,Computer Facilities Management Services,WOSB
+541519,Other Computer Related Services,WOSB
+541611,Administrative Management and General Management Consulting Services,WOSB
+541612,Human Resources Consulting Services,WOSB
+541613,Marketing Consulting Services,WOSB
+541614,"Process, Physical Distribution, and Logistics Consulting Services",WOSB
+541618,Other Management Consulting Services,WOSB
+541620,Environmental Consulting Services,WOSB
+541690,Other Scientific and Technical Consulting Services,WOSB
+541713,Research and Development in Nanotechnology,WOSB
+541714,Research and Development in Biotechnology (except Nanobiotechnology),WOSB
+541715,"Research and Development in the Physical, Engineering, and Life Sciences (except Nanotechnology and Biotechnology)",WOSB
+541720,Research and Development in the Social Sciences and Humanities,WOSB
+541810,Advertising Agencies,WOSB
+541820,Public Relations Agencies,WOSB
+541830,Media Buying Agencies,WOSB
+541840,Media Representatives,WOSB
+541850,Indoor and Outdoor Display Advertising,WOSB
+541860,Direct Mail Advertising,WOSB
+541870,Advertising Material Distribution Services,WOSB
+541890,Other Services Related to Advertising,WOSB
+541910,Marketing Research and Public Opinion Polling,WOSB
+541921,"Photography Studios, Portrait",WOSB
+541922,Commercial Photography,WOSB
+541930,Translation and Interpretation Services,WOSB
+541940,Veterinary Services,WOSB
+541990,"All Other Professional, Scientific, and Technical Services",WOSB
+561110,Office Administrative Services,WOSB
+561210,Facilities Support Services,WOSB
+561311,Employment Placement Agencies,WOSB
+561312,Executive Search Services,WOSB
+561320,Temporary Help Services,WOSB
+561330,Professional Employer Organizations,WOSB
+561410,Document Preparation Services,WOSB
+561421,Telephone Answering Services,WOSB
+561422,Telemarketing Bureaus and Other Contact Centers,WOSB
+561431,Private Mail Centers,WOSB
+561439,Other Business Service Centers (including Copy Shops),WOSB
+561440,Collection Agencies,WOSB
+561450,Credit Bureaus,WOSB
+561491,Repossession Services,WOSB
+561492,Court Reporting and Stenotype Services,WOSB
+561499,All Other Business Support Services,WOSB
+561510,Travel Agencies,WOSB
+561520,Tour Operators,WOSB
+561591,Convention and Visitors Bureaus,WOSB
+561599,All Other Travel Arrangement and Reservation Services,WOSB
+561611,Investigation and Personal Background Check Services,WOSB
+561612,Security Guards and Patrol Services,WOSB
+561613,Armored Car Services,WOSB
+561621,Security Systems Services (except Locksmiths),WOSB
+561622,Locksmiths,WOSB
+561710,Exterminating and Pest Control Services,EDWOSB
+561720,Janitorial Services,EDWOSB
+561730,Landscaping Services,EDWOSB
+561740,Carpet and Upholstery Cleaning Services,EDWOSB
+561790,Other Services to Buildings and Dwellings,EDWOSB
+561910,Packaging and Labeling Services,WOSB
+561920,Convention and Trade Show Organizers,WOSB
+561990,All Other Support Services,WOSB
+562111,Solid Waste Collection,EDWOSB
+562112,Hazardous Waste Collection,EDWOSB
+562119,Other Waste Collection,EDWOSB
+562910,Remediation Services,WOSB
+562920,Materials Recovery Facilities,WOSB
+562991,Septic Tank and Related Services,WOSB
+562998,All Other Miscellaneous Waste Management Services,WOSB
+611110,Elementary and Secondary Schools,WOSB
+611210,Junior Colleges,WOSB
+611310,"Colleges, Universities, and Professional Schools",WOSB
+611410,Business and Secretarial Schools,WOSB
+611420,Computer Training,WOSB
+611430,Professional and Management Development Training,WOSB
+611511,Cosmetology and Barber Schools,WOSB
+611512,Flight Training,WOSB
+611513,Apprenticeship Training,WOSB
+611519,Other Technical and Trade Schools,WOSB
+611710,Educational Support Services,WOSB
+621111,Offices of Physicians (except Mental Health Specialists),WOSB
+621112,"Offices of Physicians, Mental Health Specialists",WOSB
+621310,Offices of Chiropractors,EDWOSB
+621320,Offices of Optometrists,EDWOSB
+621330,Offices of Mental Health Practitioners (except Physicians),EDWOSB
+621340,"Offices of Physical, Occupational and Speech Therapists, and Audiologists",EDWOSB
+621391,Offices of Podiatrists,EDWOSB
+621399,Offices of All Other Miscellaneous Health Practitioners,EDWOSB
+621410,Family Planning Centers,WOSB
+621420,Outpatient Mental Health and Substance Abuse Centers,WOSB
+621491,HMO Medical Centers,WOSB
+621492,Kidney Dialysis Centers,WOSB
+621493,Freestanding Ambulatory Surgical and Emergency Centers,WOSB
+621498,All Other Outpatient Care Centers,WOSB
+621511,Medical Laboratories,WOSB
+621512,Diagnostic Imaging Centers,WOSB
+621610,Home Health Care Services,WOSB
+621910,Ambulance Services,WOSB
+621991,Blood and Organ Banks,WOSB
+621999,All Other Miscellaneous Ambulatory Health Care Services,WOSB
+622110,General Medical and Surgical Hospitals,WOSB
+623110,Nursing Care Facilities (Skilled Nursing Facilities),WOSB
+623210,Residential Intellectual and Developmental Disability Facilities,WOSB
+623220,Residential Mental Health and Substance Abuse Facilities,WOSB
+623990,Other Residential Care Facilities,WOSB
+624110,Child and Youth Services,WOSB
+624120,Services for the Elderly and Persons with Disabilities,WOSB
+624190,Other Individual and Family Services,WOSB
+624210,Community Food Services,WOSB
+624221,Temporary Shelters,WOSB
+624229,Other Community Housing Services,WOSB
+624230,Emergency and Other Relief Services,WOSB
+624310,Vocational Rehabilitation Services,WOSB
+624410,Child Care Services,EDWOSB
+711211,Sports Teams and Clubs,WOSB
+711212,Racetracks,WOSB
+711219,Other Spectator Sports,WOSB
+711310,"Promoters of Performing Arts, Sports, and Similar Events with Facilities",WOSB
+711320,"Promoters of Performing Arts, Sports, and Similar Events without Facilities",WOSB
+711410,"Agents and Managers for Artists, Athletes, Entertainers, and Other Public Figures",WOSB
+711510,"Independent Artists, Writers, and Performers",WOSB
+712110,Museums,EDWOSB
+712120,Historical Sites,EDWOSB
+712130,Zoos and Botanical Gardens,EDWOSB
+712190,Nature Parks and Other Similar Institutions,EDWOSB
+713110,Amusement and Theme Parks,WOSB
+713120,Amusement Arcades,WOSB
+713910,Golf Courses and Country Clubs,WOSB
+713920,Skiing Facilities,WOSB
+713930,Marinas,WOSB
+713940,Fitness and Recreational Sports Centers,WOSB
+713950,Bowling Centers,WOSB
+713990,All Other Amusement and Recreation Industries,WOSB
+721110,Hotels (except Casino Hotels) and Motels,EDWOSB
+721120,Casino Hotels,EDWOSB
+721191,Bed-and-Breakfast Inns,EDWOSB
+721199,All Other Traveler Accommodation,EDWOSB
+721211,RV (Recreational Vehicle) Parks and Campgrounds,EDWOSB
+721214,Recreational and Vacation Camps (except Campgrounds),EDWOSB
+722310,Food Service Contractors,WOSB
+722320,Caterers,WOSB
+722330,Mobile Food Services,WOSB
+722511,Full-Service Restaurants,WOSB
+722513,Limited-Service Restaurants,WOSB
+722514,"Cafeterias, Grill Buffets, and Buffets",WOSB
+722515,Snack and Nonalcoholic Beverage Bars,WOSB
+811210,Electronic and Precision Equipment Repair and Maintenance,WOSB
+811310,Commercial and Industrial Machinery and Equipment (except Automotive and Electronic) Repair and Maintenance,WOSB
+811411,Home and Garden Equipment Repair and Maintenance,EDWOSB
+811412,Appliance Repair and Maintenance,EDWOSB
+811420,Reupholstery and Furniture Repair,EDWOSB
+811430,Footwear and Leather Goods Repair,EDWOSB
+811490,Other Personal and Household Goods Repair and Maintenance,EDWOSB
+812111,Barber Shops,EDWOSB
+812112,Beauty Salons,EDWOSB
+812113,Nail Salons,EDWOSB
+812191,Diet and Weight Reducing Centers,EDWOSB
+812199,Other Personal Care Services,EDWOSB
+812210,Funeral Homes and Funeral Services,WOSB
+812220,Cemeteries and Crematories,WOSB
+812310,Coin-Operated Laundries and Drycleaners,WOSB
+812320,Drycleaning and Laundry Services (except Coin-Operated),WOSB
+812331,Linen Supply,WOSB
+812332,Industrial Launderers,WOSB
+812910,Pet Care (except Veterinary) Services,WOSB
+812921,Photofinishing Laboratories (except One-Hour),WOSB
+812922,One-Hour Photofinishing,WOSB
+812930,Parking Lots and Garages,WOSB
+812990,All Other Personal Services,WOSB
+813110,Religious Organizations,EDWOSB
+813211,Grantmaking Foundations,WOSB
+813212,Voluntary Health Organizations,WOSB
+813219,Other Grantmaking and Giving Services,WOSB
+813311,Human Rights Organizations,WOSB
+813312,"Environment, Conservation and Wildlife Organizations",WOSB
+813319,Other Social Advocacy Organizations,WOSB
+813410,Civic and Social Organizations,WOSB
+813910,Business Associations,WOSB
+813920,Professional Organizations,WOSB
+813930,Labor Unions and Similar Labor Organizations,WOSB
+813940,Political Organizations,WOSB
+813990,"Other Similar Organizations (except Business, Professional, Labor, and Political Organizations)",WOSB
