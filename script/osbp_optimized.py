@@ -1442,7 +1442,7 @@ def insights_test2(df):
         df (_type_): _description_
     """
     # Define the insight2 folder location.
-    insight2_folder = r'C:/PyProjects/OSBP Insights/data/processed/insight2'
+    insight2_folder = r'C:/PyProjects/contract_profiles/data/processed/insight2'
     
     # If the insight2 folder does not exist, create it.
     if not os.path.exists(insight2_folder):
