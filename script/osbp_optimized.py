@@ -15,51 +15,51 @@ from docx.oxml import OxmlElement
 from docx.enum.dml import MSO_THEME_COLOR_INDEX
 
 
-# This function finds the latest file in a folder based on the file pattern.  It will determine if the file is .xlsx or .csv and read the file accordingly.
+
 common_folders = {
     #This is the initial data pull from the data sources. This is the first step in the data pipeline.  It will contain both the acc_ri and army data sources. POTENTIALLY MAKE THIS ITS OWN SCRIPT TO BE RUN MONTHLY SINCE READING THE ARMY DATA SOURCE TAKES ABOUT 30 MINUTES.  THIS WILL ALLOW ONLY ONE SPREADSHEET TO BE NEEDED.
-    'raw_data_folder': r'C:\PyProjects\contract_profiles\data\raw',
+    'raw_data_folder': r'C:\GitHub\contract_profiles\data\raw',
     
-    'raw_acc_ri_data_source_file': r'C:\PyProjects\contract_profiles\data\raw\raw_acc_ri_data_source_file.xlsx',
-    'raw_army_data_source_file': r'C:\PyProjects\contract_profiles\data\raw\raw_army_data_source_file.xlsx',
+    'raw_acc_ri_data_source_file': r'C:\GitHub\contract_profiles\data\raw\raw_acc_ri_data_source_file.xlsx',
+    'raw_army_data_source_file': r'C:\GitHub\contract_profiles\data\raw\raw_army_data_source_file.xlsx',
     
     # The interime folder is where the clean and transformed data source files is stored and used to build all insights target lists from.  This is the most important folder in the data pipeline.
-    'interim_data_source_folder': r'C:\PyProjects\contract_profiles\data\interim',
-    'interim_data_source_file': r'C:\PyProjects\contract_profiles\data\interim\acc-ri_data_source.csv',
-    'interim_army_data_source_folder': r'C:\PyProjects\contract_profiles\data\interim',
-    'interim_army_data_source_file': r'C:\PyProjects\contract_profiles\data\interim\army_data_source.csv',
+    'interim_data_source_folder': r'C:\GitHub\contract_profiles\data\interim',
+    'interim_data_source_file': r'C:\GitHub\contract_profiles\data\interim\acc-ri_data_source.csv',
+    'interim_army_data_source_folder': r'C:\GitHub\contract_profiles\data\interim',
+    'interim_army_data_source_file': r'C:\GitHub\contract_profiles\data\interim\army_data_source.csv',
     
     # The processed folder is the location where all the target lists are created and stored.  These target lists is what the contract profiles are built from.
-    'inights_folder': r'C:\PyProjects\contract_profiles\data\processed',
+    'inights_folder': r'C:\GitHub\contract_profiles\data\processed',
     
-    'insight_unrestricted_awarded_to_sb_folder': r'C:\PyProjects\contract_profiles\data\processed\unrestricted_awarded_to_sb',
-    'insight_unrestricted_awarded_to_sb_file': r'C:\PyProjects\contract_profiles\data\processed\unrestricted_awarded_to_sb\insights_target1.csv',
+    'insight_unrestricted_awarded_to_sb_folder': r'C:\GitHub\contract_profiles\data\processed\unrestricted_awarded_to_sb',
+    'insight_unrestricted_awarded_to_sb_file': r'C:\GitHub\contract_profiles\data\processed\unrestricted_awarded_to_sb\insights_target1.csv',
     
-    'insight_sbsa_with_potential_for_socio_set_aside_folder': r'C:\PyProjects\contract_profiles\data\processed\sbsa_with_potential_for_socio_set_asides',
-    'insight_sbsa_with_potential_for_socio_set_aside_file': r'C:\PyProjects\contract_profiles\data\processed\sbsa_with_potential_for_socio_set_asides.csv',
+    'insight_sbsa_with_potential_for_socio_set_aside_folder': r'C:\GitHub\contract_profiles\data\processed\sbsa_with_potential_for_socio_set_asides',
+    'insight_sbsa_with_potential_for_socio_set_aside_file': r'C:\GitHub\contract_profiles\data\processed\sbsa_with_potential_for_socio_set_asides.csv',
     
-    'insight_8a_with_exit_before_expiration_folder': r'C:\PyProjects\contract_profiles\data\processed\8a_with_exit_before_expiration',
-    'insight_8a_with_exit_before_expiration_file': r'C:\PyProjects\contract_profiles\data\processed\8a_with_exit_before_expira.csv',
+    'insight_8a_with_exit_before_expiration_folder': r'C:\GitHub\contract_profiles\data\processed\8a_with_exit_before_expiration',
+    'insight_8a_with_exit_before_expiration_file': r'C:\GitHub\contract_profiles\data\processed\8a_with_exit_before_expira.csv',
     
     # The reports folder is where the initial contract profiles are stored.  This is the final step in the data pipeline before using them to support proactive market research.
-    'contract_profiles_folder': r'C:\PyProjects\contract_profiles\reports\contract_profiles',
-    'contract_profiles_template_file': r'C:\PyProjects\contract_profiles\reports\contract_profiles\template_contract_profile.docx',
-    'completed_profiles_folder': r'C:\PyProjects\contract_profiles\reports\contract_profiles\completed_profiles',
+    'contract_profiles_folder': r'C:\GitHub\contract_profiles\reports\contract_profiles',
+    'contract_profiles_template_file': r'C:\GitHub\contract_profiles\reports\contract_profiles\template_contract_profile.docx',
+    'completed_profiles_folder': r'C:\GitHub\contract_profiles\reports\contract_profiles\completed_profiles',
     
     # The references folder is where the reference data is stores.  This data is used to support the SB Profile Analysis in the contract profiles.
     # The Underepresented NAICS list comes from the SBA website and is used to identify NAICS codes that are underrepresented by WOSBs and EDWOSBs.  This list is used to identify contracts that are set aside for WOSBs and EDWOSBs.
-    'wosb_naics_list' : r'C:\PyProjects\contract_profiles\references\wosb_naics\wosb_naics_list.csv',
+    'wosb_naics_list' : r'C:\GitHub\contract_profiles\references\wosb_naics\wosb_naics_list.csv',
     # The NMR Waiver list comes from the SBA website and is used to identify NAICS codes that have a waiver for the Non-Manufacturer Rule.  This list is used to identify contracts that have a waiver for the NMR.
-    'nmr_waiver_list' : r'C:\PyProjects\contract_profiles\references\nmr_class_waivers\nmr_waiver_list.csv',
+    'nmr_waiver_list' : r'C:\GitHub\contract_profiles\references\nmr_class_waivers\nmr_waiver_list.csv',
     # The Size Standard list comes from the SBA website and is used to identify the size standard for each NAICS code.
-    'size_standard_list' : r'C:\PyProjects\contract_profiles\references\size_standards\size_standards_list.csv',
-    'forecast_folder' : r'C:\PyProjects\contract_profiles\references\forecast_listing',
-    'osbp_forecast_file' : r'C:\PyProjects\contract_profiles\references\forecast_listing\osbp_forecast.csv',
-    'amc_forecast_file' : r'C:\PyProjects\contract_profiles\references\forecast_listing\amc_forecast.csv',
-    'hyperlinks_folder' : r'C:\PyProjects\contract_profiles\references\hyperlinks',
-    'hyperlinks_file' : r'C:\PyProjects\contract_profiles\references\hyperlinks\hyperlinks_listing.csv',
+    'size_standard_list' : r'C:\GitHub\contract_profiles\references\size_standards\size_standards_list.csv',
+    'forecast_folder' : r'C:\GitHub\contract_profiles\references\forecast_listing',
+    'osbp_forecast_file' : r'C:\GitHub\contract_profiles\references\forecast_listing\osbp_forecast.csv',
+    'amc_forecast_file' : r'C:\GitHub\contract_profiles\references\forecast_listing\amc_forecast.csv',
+    'hyperlinks_folder' : r'C:\GitHub\contract_profiles\references\hyperlinks',
+    'hyperlinks_file' : r'C:\GitHub\contract_profiles\references\hyperlinks\hyperlinks_listing.csv',
 }
-
+# This function finds the latest file in a folder based on the file pattern.  It will determine if the file is .xlsx or .csv and read the file accordingly.
 def find_latest_file(folder_path: str, file_pattern: str) -> str:
     """
     Find the latest file in a folder based on the file pattern.
@@ -1442,7 +1442,7 @@ def insights_test2(df):
         df (_type_): _description_
     """
     # Define the insight2 folder location.
-    insight2_folder = r'C:/PyProjects/contract_profiles/data/processed/insight2'
+    insight2_folder = r'C:/GitHub/contract_profiles/data/processed/insight2'
     
     # If the insight2 folder does not exist, create it.
     if not os.path.exists(insight2_folder):
