@@ -15,7 +15,7 @@ from docx.oxml import OxmlElement
 from docx.enum.dml import MSO_THEME_COLOR_INDEX
 
 
-# This function finds the latest file in a folder based on the file pattern.  It will determine if the file is .xlsx or .csv and read the file accordingly.
+
 common_folders = {
     #This is the initial data pull from the data sources. This is the first step in the data pipeline.  It will contain both the acc_ri and army data sources. POTENTIALLY MAKE THIS ITS OWN SCRIPT TO BE RUN MONTHLY SINCE READING THE ARMY DATA SOURCE TAKES ABOUT 30 MINUTES.  THIS WILL ALLOW ONLY ONE SPREADSHEET TO BE NEEDED.
     'raw_data_folder': r'C:\GitHub\contract_profiles\data\raw',
@@ -59,7 +59,7 @@ common_folders = {
     'hyperlinks_folder' : r'C:\GitHub\contract_profiles\references\hyperlinks',
     'hyperlinks_file' : r'C:\GitHub\contract_profiles\references\hyperlinks\hyperlinks_listing.csv',
 }
-
+# This function finds the latest file in a folder based on the file pattern.  It will determine if the file is .xlsx or .csv and read the file accordingly.
 def find_latest_file(folder_path: str, file_pattern: str) -> str:
     """
     Find the latest file in a folder based on the file pattern.
