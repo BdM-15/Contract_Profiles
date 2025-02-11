@@ -113,3 +113,16 @@ def get_file_name(file_path: str) -> str:
     str: The file name extracted from the file path.
     """
     return os.path.splitext(os.path.basename(file_path))[0]
+
+# This helper function to change the font size of the non-header cells to size 9 Calibri.
+def set_cell_font(cell, font_name='Calibri', font_size=9, bold=False, color=None):
+    """
+    Set the font for a table cell.
+    """
+    for paragraph in cell.paragraphs:
+        for run in paragraph.runs:
+            run.font.name = font_name
+            run.font.size = Pt(font_size)
+            run.bold = bold
+            if color:
+                run.font.color.rgb = RGBColor(*color)

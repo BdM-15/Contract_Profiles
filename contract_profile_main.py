@@ -1,10 +1,9 @@
-# Convert initial data pull which comes from VCE SB Dashboard as .xlsx file to .csv file to prepare the data for data cleansing and analysis.  Once converted, move the .csv file to the processed data folder.  This script can be rerun with new or updated data from the VCE SB Dashboard.  
-
-# This script can be rerun with new or updated data from the VCE SB Dashboard or data source. Potentially every Quarter.
+# This script can be rerun with new or updated data or data source. Potentially every Quarter.
 
 # Import the OSBP Module
-from src.dconfig import pd, data_folders, files, get_file_path
+from src.dconfig import data_folders, get_file_path
 from src.data_processing import generate_csv_from_excel, transform_data, generate_insights
+from src.profile_build import generate_profiles
  
 # Convert the raw data folder location and the file pattern to search for the latest file in the raw data folder.  #This function will first check to see if the file is older than 30 days.  If < 30, skips the cleanse and transform process.  If > 30, it will convert the file to a csv and then cleanse and transform the data.  The final file will be saved in the interim data folder. https://x.com/i/grok/share/1qrwk5gLfh8orhxLslTG1fAdE
 
@@ -33,11 +32,14 @@ for interim_data_file in interim_data_files:
 baseline_data = get_file_path('processed_data', 'acc_ri_processed_data')
 generate_insights(baseline_data, data_folders['processed_data'])
 
-# Insights Target2 are SBSAs with potential for socio set asides.
-# sb.insight_sbsa_with_potential_for_socio_set_asides()
+# # Generate the contract profiles based on the insights_list
+# insight_lists = [
+#     get_file_path('insight_unrestricted_sb_awards', 'insight1'),
+# #     get_file_path('insight_sbsa', 'insight2'),
+# #     get_file_path('insight_8a_exit', 'insight3'),
+# #     get_file_path('insight_unrestricted_otsb_awards', 'insight4')
+# # ]
 
-# # Insights Target3 are 8(a) awards, both competitive and sole source, where the incumbent 8(a) has a exit date that occurs before the contract expiratino date.
-# sb.insight_8a_with_exit_before_expiration()
-
-# Industry Insights.  Process data to provide insights on the industry.
-# sb.insight_test2(df)as
+# # Loop through each insight file and generate the contract profiles
+# for insight_file in insights_lists:
+#     generate_profiles(insight_file, data_folders['contract_profiles'])

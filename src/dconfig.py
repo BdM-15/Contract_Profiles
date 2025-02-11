@@ -1,6 +1,7 @@
 # Contain all the common folders and files that are used for the contract profile project.
 
 import pandas as pd
+import numpy as np
 import os, glob, datetime, re
 
 
@@ -37,7 +38,7 @@ files = {
     'wosb_naics_list' : 'wosb_naics_list.csv',
     'osbp_forecast' : 'Data source.csv',
     'amc_forecast' : 'Data source.csv',
-    'contract_profile_template' : 'Contract Profile Template.xlsx',
+    'profile_template' : 'template_profile.docx',
     'insight1' : 'insight_unrestricted_sb_awards.csv',
     'insight2' : 'insight_sbsa.csv',
     'insight3' : 'insight_8a_exit.csv',

@@ -1,6 +1,6 @@
 #Data processing functions used for processing the data for the contract profile project.
 from ..utils.gen_utils import does_folder_exist, get_file_name
-from ..dconfig import pd, os, datetime, data_folders, get_file_path, common_settings
+from ..dconfig import pd, os, datetime, data_folders, files, get_file_path, common_settings
 
 # This function will find the latest file and convert the raw data file from .xlsx to .csv and move it to the interim data folder.  It will also log the conversion details in a log file.
 def generate_csv_from_excel(raw_file: str, interim_data_folder: str) -> str:
@@ -138,8 +138,11 @@ def transform_army_data(interim_file, processed_folder: str):
     df = df.rename(columns={"Small Business Dollars": "SB Dollars"})
     
     #Remove rows where "Size Status" is 1 and SB Dollars is 0
-    df = df[~((df['Size Status'] == 1) & (df['SB Dollars'] == 0))]
+    # df = df[~((df['Size Status'] == 1) & (df['SB Dollars'] == 0))]
     
+    #Remove rows where "Size Status" is 0 and SB Dollars is < 10000 (less than $10,000 = Micro Purchase)
+    df = df[~((df['Size Status'] == 0) & (df['SB Dollars'] < 10000))]
+        
     # Ensure the NAICS code is a string and only first six digits are used
     df['NAICS'] = df['NAICS'].astype(str).str[:6]
     
@@ -167,8 +170,6 @@ def insight_unrestricted_sb_awards(baseline_file, insight_folder_name) -> None:
     Returns:
     None
     """
-    # Define the targets folder location. If the targets folder does not exist, create it.
-    does_folder_exist(insight_folder_name)
     
     # Define the cleansed data source file to create a DataFrame (df)
     df = pd.read_csv(baseline_file)
@@ -205,8 +206,6 @@ def insight_sbsa(baseline_file, insight_folder_name) -> None:
     Returns:
     None
     """
-    # Define the targets folder location. If the targets folder does not exist, create it.
-    does_folder_exist(insight_folder_name)
     
     # Define the cleansed data source file to create a DataFrame (df)
     df = pd.read_csv(baseline_file)
@@ -243,9 +242,6 @@ def insight_8a_exit(baseline_file, insight_folder_name) -> None:
     Returns:
     None
     """
-    # Define the targets folder location. If the targets folder does not exist, create it.
-    does_folder_exist(insight_folder_name)
-    
     # Define the cleansed data source file to create a DataFrame (df)
     df = pd.read_csv(baseline_file)
     
@@ -278,8 +274,6 @@ def insight_unrestricted_otsb_awards(baseline_file, insight_folder_name) -> None
     Returns:
     None
     """
-    # Define the targets folder location. If the targets folder does not exist, create it.
-    does_folder_exist(insight_folder_name)
     
     # Define the cleansed data source file to create a DataFrame (df)
     df = pd.read_csv(baseline_file)
@@ -317,7 +311,8 @@ def generate_insights(baseline_data, insight_folder):
         'insight2': insight_sbsa,
         'insight3': insight_8a_exit,
         'insight4': insight_unrestricted_otsb_awards,
-}
+    }
+    
     # Loop through each insight function and generate the insights using the baseline data for each insight
     for insight_key, insight_function in insight_functions.items():
         # Create a folder name based on the function name
@@ -327,5 +322,5 @@ def generate_insights(baseline_data, insight_folder):
         # Ensure the folder exists
         does_folder_exist(insight_folder_name)
         
-        print(f"Running insight function for key: {insight_key} : {insight_function.__name__}")
+        print(f"Running insight {insight_function.__name__}")
         insight_function(baseline_data, insight_folder_name)
