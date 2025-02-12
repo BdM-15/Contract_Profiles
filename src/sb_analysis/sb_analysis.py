@@ -71,7 +71,7 @@ def check_if_awardee_sb(df_row, contract_no) -> str:
     Check if the awardee is a small business based on the 'Size Status' column.
 
     Args:
-    df (pd.DataFrame): The DataFrame containing the data to be processed.
+    df_row: The row of the contract being processed.
     contract_no (str): The contract number being processed.
 
     Returns:
@@ -92,20 +92,17 @@ def check_awardee_socioeconomic_status(df_row, contract_no) -> str:
     Check if the awardee is a socio-economic status based on the 'Size Status' column.
 
     Args:
-    df (pd.DataFrame): The DataFrame containing the data to be processed.
+    df_row: The row of the contract being processed.
     contract_no (str): The contract number being processed.
 
     Returns:
     str: All socio categories they are identified as based on the "WOSB", "EDWOSB", "VOSB", "SDVOSB", "8(a)", "HUBZone", or "No" based on the socio-economic status.  If multiple categories are identified, they will be separated by a comma.
     """
     
-    # Select the 'Size Status' value from the DataFrame based on the current contract number being processed
-    socioeconomic_status = df.loc[df['Contract No'] == contract_no, 'Size Status'].values[0]
-    
-    # Create a list of all socioeconomic status the Awardee is.  Check the "SDB Concern Action", "Service Disabled Veterans Actions", "Women Owned Actions", and "HUB Zone Actions" columns to determine size status.  If the value is "1" then the Awardee is that socio-economic status and add it to the list. After reviewing all columns, return the list of socio-economic status as string seperated by a comma based on list and if list is empty return "None".
+    # Create a list to store the identified socioeconomic categories
     socioeconomic_categories = []
     
-    # Define a dictionary mapping column names to their corresponding categories
+    # Define a dictionary mapping column names to their corresponding categories "key = column : value = category"
     socioeconomic_columns = {
         'SDB Concern Actions': 'SDB',
         'Service Disabled Veterans Actions': 'SDVOSB',
@@ -114,9 +111,9 @@ def check_awardee_socioeconomic_status(df_row, contract_no) -> str:
     }
 
     # Iterate through the dictionary and check each column
-    for column, category in socioeconomic_columns.items():
-        if df.loc[df['Contract No'] == contract_no, column].values[0] == 1:
-            socioeconomic_categories.append(category)
+    for column_name, socio_category in socioeconomic_columns.items():
+        if df_row[column_name] == 1:
+            socioeconomic_categories.append(socio_category)
     
     if socioeconomic_categories:
         return ', '.join(socioeconomic_categories)
@@ -819,7 +816,7 @@ sb_profile_analysis_functions = {
     # "ACC RI Awards" : check_acc_ri_awards, #Awards that went to SB under the identified NAICS
     # "All ACC Awards" : check_all_acc_awards, #All awards made by ACC across the enterprise
     "Awardee SB" : check_if_awardee_sb,
-    # "Awardee Socio" : check_awardee_socioeconomic_status,
+    "Awardee Socio" : check_awardee_socioeconomic_status,
     # "NMR Waiver Available" : check_if_nmr_waiver_available, #Does an NMR waiver exist based on NAICS
     # "Financial Risk" : check_financial_risk, #Financial risk to industry based on distribution of SB awards under identified NAICS"
     "Modification No" : check_modification, #Check if the contract is a modification and get the most recent number
