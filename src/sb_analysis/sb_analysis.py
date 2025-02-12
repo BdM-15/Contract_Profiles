@@ -161,7 +161,7 @@ def check_acc_ri_awards(df_row, contract_no) -> str:
     Returns:
     int: The number of awards made.
     """
-     # Select the NAICS value from the DataFrame based on the current contract number being processed
+    # Select the NAICS value from the DataFrame based on the current contract number being processed
     naics = df_row['NAICS']
     
     # makre sure naics is a string and only the first six characters are used
@@ -184,58 +184,39 @@ def check_acc_ri_awards(df_row, contract_no) -> str:
     else:
         return str(acc_ri_awards_df.shape[0])
     
-def check_all_acc_awards(df_row, contract_no):
+def check_army_awards(df_row, contract_no):
     """
     Get the number of awards made by the Army enterprise to small businesses based on the NAICS code from the current contract being processed.
 
     Args:
-    df (pd.DataFrame): The DataFrame containing the data to be processed.
+    df_row: The row of the contract being processed.
     contract_no (str): The contract number being processed.
 
     Returns:
     int: The number of awards made.
     """
-    # Select the 'NAICS' value from the DataFrame based on the current contract number being processed
-    naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
+    # Select the NAICS value from the DataFrame based on the current contract number being processed
+    naics = df_row['NAICS']
     
     # makre sure naics is a string and only the first six digits are used
     naics = str(naics)[:6]
-    # print(contract_no)
-    # print(naics)
-    # print("")
-    
-    # Only read the 'NAICS', 'Size Status', and ' columns into df the data source file that will be used to determine award count.
-    acc_awards_df = pd.read_csv(data_folders['cleansed_all_army_data_source_file'], usecols=['NAICS', 'Size Status', 'Contract Action Type'])
-    # acc_awards_df = pd.read_csv(data_folders['cleansed_all_army_data_source_file'])
-  
+ 
+    # Use the processed army_processed_data.csv file to get the total awards across army enterprise
+    army_awards_df = pd.read_csv(get_file_path('processed_data', 'army_processed_data'))
     # Remove unique_values "Modification", "MATOC", "SATOC" from the 'Contract Action Type' column
-    acc_awards_df = acc_awards_df[~acc_awards_df['Contract Action Type'].str.upper().isin(["MODIFICATION", "MATOC", "SATOC"])]
+    army_awards_df = army_awards_df[~army_awards_df['Contract Action Type'].str.upper().isin(["MODIFICATION", "MATOC", "SATOC"])]
+                        
+    # Ensure the NAICS column is of the same type as naics and only six characters are used
+    army_awards_df['NAICS'] = army_awards_df['NAICS'].astype(type(naics)).str[:6]
     
-    # # Rename column "Small Business Actions" to "Size Status"
-    # acc_awards_df = acc_awards_df.rename(columns={"Small Business Actions": "Size Status"})
-    
-    # # Within Size Status column, replace "0" with "OTSB" and ">0" with "SB"
-    # acc_awards_df['Size Status'] = acc_awards_df['Size Status'].replace({0: 'OTSB', 1: 'SB'})
-                      
-    # Ensure the NAICS column is of the same type as naics and only six digits are used
-    acc_awards_df['NAICS'] = acc_awards_df['NAICS'].astype(str).str[:6].astype(type(naics))
-    # acc_awards_df['NAICS'] = acc_awards_df['NAICS'].astype(type(naics))
-        
-    # Ensure the Size Status column is of the same type as "SB" and only six digits are used
-    acc_awards_df['Size Status'] = acc_awards_df['Size Status'].astype(str).str.strip()
-    
-    # print("Dataframe before filter:", acc_awards_df)
-    # print("")
-    # Filter the acc_awards_df based on the naics identified from the contract being processed
-    acc_awards_df = acc_awards_df.loc[(acc_awards_df['NAICS'] == naics) & (acc_awards_df['Size Status'] == "SB")]
-    # print("Dataframe after filter:", acc_awards_df)
-    # print("")
-    
+    # Filter the army_awards_df based on the naics identified from the contract being processed
+    army_awards_df = army_awards_df.loc[(army_awards_df['NAICS'] == naics) & (army_awards_df['Size Status'] == "SB")]
+
     # If dataframe is empty return "0", else return the number of rows remaining after filter to get the award count
-    if acc_awards_df.empty:
+    if army_awards_df.empty:
         return str(0)
     else:
-        return str(acc_awards_df.shape[0])
+        return str(army_awards_df.shape[0])
     
 def check_financial_risk(df_row, contract_no) -> str:
     """
@@ -807,7 +788,7 @@ sb_profile_analysis_functions = {
     "Awardee Socio" : check_awardee_socioeconomic_status,
     "NMR Waiver Available" : check_if_nmr_waiver_available, #Does an NMR waiver exist based on NAICS
     "ACC RI Awards" : check_acc_ri_awards, #Awards that went to SB under the identified NAICS
-    # "All ACC Awards" : check_all_acc_awards, #All awards made by ACC across the enterprise# "Financial Risk" : check_financial_risk, #Financial risk to industry based on distribution of SB awards under identified NAICS"
+    "All ACC Awards" : check_army_awards, #All awards made by ACC across the enterprise# "Financial Risk" : check_financial_risk, #Financial risk to industry based on distribution of SB awards under identified NAICS"
     "Modification No" : check_modification, #Check if the contract is a modification and get the most recent number
     # "PCF Cabinet" : check_pcf_cabinet_link, #Provide link to PCF Cabinet and return a str or hyperlink
     # "Forecast No" : check_forecast # Identify the forecast solicitation/PANCOC number
