@@ -12,18 +12,15 @@ def check_size_standard(df_row, contract_no) -> str:
     str: Value from from the 'Size standards in millions of dollars' column.  If 'Size standards in millions of dollars' is not present, return value from 'Size standards in number of employees' column.  If the NAICS value is not present, return "No".
     """
     
-    # Select the 'NAICS' value from the DataFrame based on the current contract number being processed
-    naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
+     # Get the NAICS value from the df_row from the "NAICS" column
+    naics = df_row['NAICS']
     
     # makre sure naics is a string and only the first six digits are used
     naics = str(naics)[:6]
 
     # Read the Size Standard listing
-    size_standard_df = pd.read_csv(data_folders['size_standard_list'])
-    
-    # Remove any value after the six digit in the NAICS Code column
-    size_standard_df['NAICS Code'] = size_standard_df['NAICS Codes'].astype(str).str[:6]
-    
+    size_standard_df = pd.read_csv(get_file_path('size_standards', 'size_standards_list'))
+        
     # Make sure the "Size standards in millions of dollars" column is string type
     size_standard_df['Size standards in millions of dollars'] = size_standard_df['Size standards in millions of dollars'].astype(str)
     
@@ -32,10 +29,10 @@ def check_size_standard(df_row, contract_no) -> str:
     
     # Check if naics is in the size_standard_df['NAICS Codes'] column. Search the 'Size standards in millions of dollars' column for a value. If a value exists return that value. If no value found move over one column and return its value.  Otherwise, return naics not found message
     if naics in size_standard_df['NAICS Codes'].values:
-        if size_standard_df.loc[size_standard_df['NAICS Code'] == naics, 'Size standards in millions of dollars'].values[0] != 'nan':
-            return str(size_standard_df.loc[size_standard_df['NAICS Code'] == naics, 'Size standards in millions of dollars'].values[0]).strip() + "M"
+        if size_standard_df.loc[size_standard_df['NAICS Codes'] == naics, 'Size standards in millions of dollars'].values[0] != 'nan':
+            return str(size_standard_df.loc[size_standard_df['NAICS Codes'] == naics, 'Size standards in millions of dollars'].values[0]).strip() + "M"
         else:
-            return str(size_standard_df.loc[size_standard_df['NAICS Code'] == naics, 'Size standards in number of employees'].values[0]).strip() + " Employees"
+            return str(size_standard_df.loc[size_standard_df['NAICS Codes'] == naics, 'Size standards in number of employees'].values[0]).strip() + " Employees"
     else:
         return f'{naics} not found'  
      
@@ -815,7 +812,7 @@ def check_socio_sole_source_eligible(df_row, contract_no) -> str:
 sb_profile_analysis_functions = {
     # "IT Buy" : check_it_buy, # Check NAICS desription to determine if it is an IT buy, search for specific keywords and return yes or no
     # "Strong Competition" : check_strong_competition, # Get a sense of average number of offerors against this NAICS (use all army data source file)
-    # "Size Standard" : check_size_standard,
+    "Size Standard" : check_size_standard,
     # "Top NAICS" : check_top_naics, #Top 25 NIACS either by SB Dollars or SB Actions
     "Target NAICS" : check_targeted_naics, #NAICS identified by specific needs or objectives or rationales/logic
     # "WOSB Eligible" : check_wosb_naics, # Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing

@@ -34,7 +34,7 @@ files = {
     'acc_ri_processed_data' : 'acc_ri_processed_data.csv',
     'army_processed_data' : 'army_processed_data.csv',
     'nmr_waiver_list' : 'nmr_waiver_list.csv',
-    'size_standards' : 'size_standards_list.csv',
+    'size_standards_list' : 'size_standards_list.csv',
     'wosb_naics_list' : 'wosb_naics_list.csv',
     'osbp_forecast' : 'Data source.csv',
     'amc_forecast' : 'Data source.csv',

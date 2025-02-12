@@ -42,5 +42,4 @@ insights_lists = [
 
 # Loop through each insight file and generate the contract profiles
 for insight_file in insights_lists:
-
     generate_profiles(insight_file, data_folders['contract_profiles'])
