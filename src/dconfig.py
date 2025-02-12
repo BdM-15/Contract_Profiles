@@ -14,7 +14,7 @@ data_folders = {
     'interim_data' : os.path.join(base_folder, 'data', 'interim'),
     'processed_data' : os.path.join(base_folder, 'data', 'processed'),
     'references_data' : os.path.join(base_folder, 'references'),
-    'nmr_class_waiver' : os.path.join(base_folder, 'references', 'nmr_class_waiver'),
+    'nmr_class_waivers' : os.path.join(base_folder, 'references', 'nmr_class_waivers'),
     'size_standards' : os.path.join(base_folder, 'references', 'size_standards'),
     'wosb_naics' : os.path.join(base_folder, 'references', 'wosb_naics'),
     'forecasts' : os.path.join(base_folder, 'references', 'forecasts'),

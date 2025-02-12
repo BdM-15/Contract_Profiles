@@ -125,35 +125,28 @@ def check_if_nmr_waiver_available(df_row, contract_no) -> str:
     Check if an NMR waiver exists based on the NAICS code from the current contract being processed.
 
     Args:
-    df (pd.DataFrame): The DataFrame containing the data to be processed.
+    df_row: The row of the contract being processed.
     contract_no (str): The contract number being processed.
 
     Returns:
     str: "Yes" if an NMR waiver exists, "No" otherwise.
     """
     
-    # Select the 'NAICS' value from the DataFrame based on the current contract number being processed
-    naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
+    # Select the NAICS value from the DataFrame based on the current contract number being processed
+    naics = df_row['NAICS']
         
     # makre sure naics is a string and only the first six digits are used
     naics = str(naics)[:6]
     
-    # Define path for nmr_waiver_list
-    # wosb_naics_path = data_folders['wosb_naics_list']
-    
     # Read the nmr_waiver_list (needs to be saved as CSV UTF-8)
-    nmr_waiver_list_df = pd.read_csv(data_folders['nmr_waiver_list'])
+    nmr_waiver_list_df = pd.read_csv(get_file_path('nmr_class_waivers', 'nmr_waiver_list'))
     
-    # Remove any value after the six digit in the NAICS Code column
-    nmr_waiver_list_df['NAICS CODE'] = nmr_waiver_list_df['NAICS CODE'].astype(str).str[:6]
+    # Ensure the NAICS column is of the same type as naics and only six characters are used
+    nmr_waiver_list_df['NAICS CODE'] = nmr_waiver_list_df['NAICS CODE'].astype(type(naics)).str[:6]
     
-    # Make sure the "NAICS DESCRIPTOR" column is string type
-    nmr_waiver_list_df['NAICS DESCRIPTOR'] = nmr_waiver_list_df['NAICS DESCRIPTOR'].astype(str)
-    
-    # Check if naics is in the nmr_waiver_list_df['NAICS Code'] column. If yes, return the value in the 'Set-aside' column. If no, return "No"
+    # Check if naics is in the nmr_waiver_list_df['NAICS Code'] column.
     if naics in nmr_waiver_list_df['NAICS CODE'].values:
         return "Yes"
-        # return nmr_waiver_list_df.loc[nmr_waiver_list_df['NAICS CODE'] == naics, 'NAICS DESCRIPTOR'].values[0]
     else:
         return "No"
     
@@ -817,7 +810,7 @@ sb_profile_analysis_functions = {
     # "All ACC Awards" : check_all_acc_awards, #All awards made by ACC across the enterprise
     "Awardee SB" : check_if_awardee_sb,
     "Awardee Socio" : check_awardee_socioeconomic_status,
-    # "NMR Waiver Available" : check_if_nmr_waiver_available, #Does an NMR waiver exist based on NAICS
+    "NMR Waiver Available" : check_if_nmr_waiver_available, #Does an NMR waiver exist based on NAICS
     # "Financial Risk" : check_financial_risk, #Financial risk to industry based on distribution of SB awards under identified NAICS"
     "Modification No" : check_modification, #Check if the contract is a modification and get the most recent number
     # "PCF Cabinet" : check_pcf_cabinet_link, #Provide link to PCF Cabinet and return a str or hyperlink
