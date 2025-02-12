@@ -1,6 +1,6 @@
-from ..dconfig import data_folders, pd, np, re
+from src.dconfig import get_file_path, pd, np, re
 
-def check_size_standard(df, contract_no) -> str:
+def check_size_standard(df_row, contract_no) -> str:
     """
     Check if the NAICS code value is present in the Size Standard listing (size_standard_list.xlsx).
 
@@ -39,7 +39,7 @@ def check_size_standard(df, contract_no) -> str:
     else:
         return f'{naics} not found'  
      
-def check_wosb_naics(df, contract_no) -> str:
+def check_wosb_naics(df_row, contract_no) -> str:
     """
     Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing (wosb_naics_list.xlsx).
 
@@ -72,7 +72,7 @@ def check_wosb_naics(df, contract_no) -> str:
     else:
         return "No"
 
-def check_if_awardee_sb(df, contract_no) -> str:
+def check_if_awardee_sb(df_row, contract_no) -> str:
     """
     Check if the awardee is a small business based on the 'Size Status' column.
 
@@ -93,7 +93,7 @@ def check_if_awardee_sb(df, contract_no) -> str:
     else:
         return "No"
     
-def check_awardee_socioeconomic_status(df, contract_no) -> str:
+def check_awardee_socioeconomic_status(df_row, contract_no) -> str:
     """
     Check if the awardee is a socio-economic status based on the 'Size Status' column.
 
@@ -129,7 +129,7 @@ def check_awardee_socioeconomic_status(df, contract_no) -> str:
     else:
         return "None"
  
-def check_if_nmr_waiver_available(df, contract_no) -> str:
+def check_if_nmr_waiver_available(df_row, contract_no) -> str:
     """
     Check if an NMR waiver exists based on the NAICS code from the current contract being processed.
 
@@ -166,7 +166,7 @@ def check_if_nmr_waiver_available(df, contract_no) -> str:
     else:
         return "No"
     
-def check_acc_ri_awards(df, contract_no) -> str:
+def check_acc_ri_awards(df_row, contract_no) -> str:
     """
     Get the number of awards made by ACC-RI to small businesses based on the NAICS code from the current contract being processed.
 
@@ -180,39 +180,30 @@ def check_acc_ri_awards(df, contract_no) -> str:
     # Select the 'NAICS' value from the DataFrame based on the current contract number being processed
     naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
     
-    # makre sure naics is a string and only the first six digits are used
+    # makre sure naics is a string and only the first six characters are used
     naics = str(naics)[:6]
-    # print(naics)
-    # print("")
     
-    # Read into df the data source file that will be used to develop the percentiles from the SB Dollars column 
-    acc_ri_awards_df = pd.read_csv(data_folders['cleansed_data_source_file'])
+    # Use the processed acc_ri_processed_data.csv file to get the modifications
+    acc_ri_awards_df = pd.read_csv(get_file_path('processed_data', 'acc_ri_processed_data'))
     
     # Filter df to only show Contract Action Types that are not "MODIFICATION", "SATOC", and "MATOC"
     acc_ri_awards_df = acc_ri_awards_df[~acc_ri_awards_df['Contract Action Type'].str.upper().isin(["MODIFICATION", "MATOC", "SATOC"])]
-    # print("Dataframe before filter:", acc_ri_awards_df)
-    # print("")
-    
-    # # Ensure the NAICS column is of the same type as naics
-    # acc_ri_awards_df['NAICS'] = acc_ri_awards_df['NAICS'].astype(type(naics))
    
-    # Ensure the NAICS column is of the same type as naics and only six digits are used
-    acc_ri_awards_df['NAICS'] = acc_ri_awards_df['NAICS'].astype(str).str[:6].astype(type(naics))
+    # Ensure the NAICS column is of the same type as naics and only six characters are used
+    acc_ri_awards_df['NAICS'] = acc_ri_awards_df['NAICS'].astype(type(naics)).str[:6]
 
     # Ensure the Size Status column is of the same type as "SB"
     acc_ri_awards_df['Size Status'] = acc_ri_awards_df['Size Status'].astype(str).str.strip()
 
     acc_ri_awards_df = acc_ri_awards_df.loc[(acc_ri_awards_df['NAICS'] == naics) & (acc_ri_awards_df['Size Status'] == "SB")]
-    # print("Dataframe after filter:", acc_ri_awards_df)
-    # print("")
-    
+
     # If dataframe is empty return "0", else return the number of rows remaining after filter to get the award count
     if acc_ri_awards_df.empty:
         return str(0)
     else:
         return str(acc_ri_awards_df.shape[0])
     
-def check_all_acc_awards(df, contract_no):
+def check_all_acc_awards(df_row, contract_no):
     """
     Get the number of awards made by the Army enterprise to small businesses based on the NAICS code from the current contract being processed.
 
@@ -265,7 +256,7 @@ def check_all_acc_awards(df, contract_no):
     else:
         return str(acc_awards_df.shape[0])
     
-def check_financial_risk(df, contract_no) -> str:
+def check_financial_risk(df_row, contract_no) -> str:
     """
     Check the financial risk to industry based on the distribution of SB dollars against the identified NAICS.
     Percentiles will be 50% for Low, 75% for Medium, and 90% and above for High. 
@@ -348,7 +339,7 @@ def check_financial_risk(df, contract_no) -> str:
         
         return risk_level
 
-def check_targeted_naics(df, contract_no) -> str:
+def check_targeted_naics(df_row, contract_no) -> str:
     """
     Check if the NAICS code value is one of the Targeted Econcomic Sector (first two digits of NAICS) identified.
 
@@ -360,8 +351,8 @@ def check_targeted_naics(df, contract_no) -> str:
     str:  If NAICS is present, return "Yes". Otherwise, return "No".
     """
     
-    # Select the 'NAICS' value from the DataFrame based on the current contract number being processed
-    naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
+    # Get the NAICS value from the df_row from the "NAICS" column
+    naics = df_row['NAICS']
     
     # makre sure naics is a string and only the first two digits are used
     naics = str(naics)[:2]
@@ -375,7 +366,7 @@ def check_targeted_naics(df, contract_no) -> str:
     else:
         return "No"
 
-def check_top_naics(df, contract_no) -> str:
+def check_top_naics(df_row, contract_no) -> str:
     """
     Check if the NAICS code value is one of the Top 25 NAICS identified by the amount of SB Actions or SB Dollars.
 
@@ -447,7 +438,7 @@ def check_top_naics(df, contract_no) -> str:
     # else:
     #     return "No"
 
-def check_strong_naics(df, contract_no) -> str:
+def check_strong_naics(df_row, contract_no) -> str:
     """
     Check if the NAICS code value is one of the Top 30% of unique NAICS identified by the amount of SB Actions or SB Dollars.
 
@@ -563,7 +554,7 @@ def check_strong_naics(df, contract_no) -> str:
     else:
         return "No"
 
-def check_weak_naics(df, contract_no) -> str:
+def check_weak_naics(df_row, contract_no) -> str:
     """
     Check if the NAICS code value is one of the Top 30% of unique NAICS identified by the amount of SB Actions or SB Dollars.
 
@@ -658,9 +649,9 @@ def check_weak_naics(df, contract_no) -> str:
     else:
         return "No"
 
-def check_modification(df,contract_no) -> str:
+def check_modification(df_row,contract_no) -> str:
     '''
-    Check if the contract has a modification and get the most recent number identified by the award date.
+    Check if the contract has a modification and get the most recent number identified sorted by the most recent award date.
     
     Args:
     df (pd.DataFrame): The DataFrame containing the data to be processed.
@@ -669,25 +660,23 @@ def check_modification(df,contract_no) -> str:
     Returns:
     str: The most recent modification number.
     '''
-    #Define the modifications file which will be the cleansed data source file
-    modification_df = pd.read_csv(data_folders['cleansed_data_source_file'], usecols=['Contract No', 'Modification No', 'Award Date', 'Contract Action Type'])
     
-    # Select the 'Contract No' value from the DataFrame based on the current contract number being processed
-    contract_no = df.loc[df['Contract No'] == contract_no, 'Contract No'].values[0]
+    # Use the processed acc_ri_processed_data.csv file to get the modifications
+    mod_df = pd.read_csv(get_file_path('processed_data', 'acc_ri_processed_data'))
     
-    # Filter the modifications_df based on the contract_no identified from the contract being processed where Contract Action Type is "MODIFICATION"
-    modification_df = modification_df.loc[(modification_df['Contract No'] == contract_no) & (modification_df['Contract Action Type'] == "MODIFICATION")]
+    # Filter the df based on the contract_no identified from the contract being processed where Contract Action Type is "MODIFICATION"
+    mod_df = mod_df.loc[(mod_df['Contract No'] == contract_no) & (mod_df['Contract Action Type'] == "MODIFICATION")]
     
     # Sort the modifications_df by 'Award Date' in descending order
-    modification_df = modification_df.sort_values(by='Award Date', ascending=False)
+    mod_df = mod_df.sort_values(by='Award Date', ascending=False)
     
     # Get the most recent 'Modification Number' from the modifications_df
-    if modification_df.empty:
+    if mod_df.empty:
         return "No Modifications"
     else:
-        return modification_df['Modification No'].values[0]
+        return mod_df.iloc[0]['Modification No']
     
-def check_forecast(df, contract_no) -> str:
+def check_forecast(df_row, contract_no) -> str:
         '''
         Check if the contract is a forecasted action and return the VCE-PCF Cabinet Name.
         
@@ -708,7 +697,7 @@ def check_forecast(df, contract_no) -> str:
         else:
             return "No Forecast Identified"
         
-def check_pcf_cabinet_link(df, contract_no) -> str:
+def check_pcf_cabinet_link(df_row, contract_no) -> str:
     '''
     Check the file and determine if there is a link to the identified contract being processes.
     
@@ -744,7 +733,7 @@ def check_pcf_cabinet_link(df, contract_no) -> str:
   
     return hyperlink
 
-def check_it_buy(df, contract_no) -> str:
+def check_it_buy(df_row, contract_no) -> str:
     """
     Check the NAICS Description, PSC Description, OMB Level 1 and OMB Level 2 columns for certain combinations and keywords to determine if it is an IT buy.
 
@@ -782,7 +771,7 @@ def check_it_buy(df, contract_no) -> str:
     else:
         return "No"
 
-def check_socio_sole_source_eligible(df, contract_no) -> str:
+def check_socio_sole_source_eligible(df_row, contract_no) -> str:
     """
     Check if the contract is eligible for sole source award based on the dollar value.
 
@@ -824,22 +813,22 @@ def check_socio_sole_source_eligible(df, contract_no) -> str:
     #     return ', '.join(all_eligible_sole_source_categories)
     
 sb_profile_analysis_functions = {
-    "IT Buy" : check_it_buy, # Check NAICS desription to determine if it is an IT buy, search for specific keywords and return yes or no
+    # "IT Buy" : check_it_buy, # Check NAICS desription to determine if it is an IT buy, search for specific keywords and return yes or no
     # "Strong Competition" : check_strong_competition, # Get a sense of average number of offerors against this NAICS (use all army data source file)
-    "Size Standard" : check_size_standard,
-    "Top NAICS" : check_top_naics, #Top 25 NIACS either by SB Dollars or SB Actions
+    # "Size Standard" : check_size_standard,
+    # "Top NAICS" : check_top_naics, #Top 25 NIACS either by SB Dollars or SB Actions
     "Target NAICS" : check_targeted_naics, #NAICS identified by specific needs or objectives or rationales/logic
-    "WOSB Eligible" : check_wosb_naics, # Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing
-    "Strong NAICS" : check_strong_naics, #Top 30% of NAICS based on SB Dollars or SB Actions
-    "Weak NAICS" : check_weak_naics, #10th percentile of SB Dollars or SB Actions
+    # "WOSB Eligible" : check_wosb_naics, # Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing
+    # "Strong NAICS" : check_strong_naics, #Top 30% of NAICS based on SB Dollars or SB Actions
+    # "Weak NAICS" : check_weak_naics, #10th percentile of SB Dollars or SB Actions
     # "Socio SS Eligible" : check_socio_sole_source_eligible, # Check if the $ value is below the threshold ($4M SDVOSB, $4.5M all others)
-    "ACC RI Awards" : check_acc_ri_awards, #Awards that went to SB under the identified NAICS
-    "All ACC Awards" : check_all_acc_awards, #All awards made by ACC across the enterprise
-    "Awardee SB" : check_if_awardee_sb,
-    "Awardee Socio" : check_awardee_socioeconomic_status,
-    "NMR Waiver Available" : check_if_nmr_waiver_available, #Does an NMR waiver exist based on NAICS
-    "Financial Risk" : check_financial_risk, #Financial risk to industry based on distribution of SB awards under identified NAICS"
+    # "ACC RI Awards" : check_acc_ri_awards, #Awards that went to SB under the identified NAICS
+    # "All ACC Awards" : check_all_acc_awards, #All awards made by ACC across the enterprise
+    # "Awardee SB" : check_if_awardee_sb,
+    # "Awardee Socio" : check_awardee_socioeconomic_status,
+    # "NMR Waiver Available" : check_if_nmr_waiver_available, #Does an NMR waiver exist based on NAICS
+    # "Financial Risk" : check_financial_risk, #Financial risk to industry based on distribution of SB awards under identified NAICS"
     "Modification No" : check_modification, #Check if the contract is a modification and get the most recent number
-    "PCF Cabinet" : check_pcf_cabinet_link, #Provide link to PCF Cabinet and return a str or hyperlink
-    "Forecast No" : check_forecast # Identify the forecast solicitation/PANCOC number
+    # "PCF Cabinet" : check_pcf_cabinet_link, #Provide link to PCF Cabinet and return a str or hyperlink
+    # "Forecast No" : check_forecast # Identify the forecast solicitation/PANCOC number
 } 

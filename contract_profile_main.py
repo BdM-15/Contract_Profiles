@@ -32,14 +32,15 @@ for interim_data_file in interim_data_files:
 baseline_data = get_file_path('processed_data', 'acc_ri_processed_data')
 generate_insights(baseline_data, data_folders['processed_data'])
 
-# # Generate the contract profiles based on the insights_list
-# insight_lists = [
-#     get_file_path('insight_unrestricted_sb_awards', 'insight1'),
-# #     get_file_path('insight_sbsa', 'insight2'),
-# #     get_file_path('insight_8a_exit', 'insight3'),
-# #     get_file_path('insight_unrestricted_otsb_awards', 'insight4')
-# # ]
+# Generate the contract profiles based on the insights_list
+insights_lists = [
+    get_file_path('insight_unrestricted_sb_awards', 'insight1'),
+#     get_file_path('insight_sbsa', 'insight2'),
+#     get_file_path('insight_8a_exit', 'insight3'),
+#     get_file_path('insight_unrestricted_otsb_awards', 'insight4')
+]
 
-# # Loop through each insight file and generate the contract profiles
-# for insight_file in insights_lists:
-#     generate_profiles(insight_file, data_folders['contract_profiles'])
+# Loop through each insight file and generate the contract profiles
+for insight_file in insights_lists:
+
+    generate_profiles(insight_file, data_folders['contract_profiles'])

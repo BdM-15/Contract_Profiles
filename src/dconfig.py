@@ -116,7 +116,7 @@ sb_categories = {
 }
 # common settings
 common_settings = {
-    'max_rows' : 10, # For testing purposes
+    'max_rows' : 5, # For testing purposes
     'max_months_remaining' : 24, # Maximum number of months remaining on a contract
     'min_months_remaining' : 6, # Minimum number of months remaining on a contract
 }

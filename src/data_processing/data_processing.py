@@ -81,14 +81,14 @@ def transform_acc_ri_data(interim_file, processed_folder: str):
     # Rename column "Small Business Actions" to "Size Status"
     df = df.rename(columns={"Small Business Actions": "Size Status"})
     
-    # # Within Size Status column, replace "0" with "OTSB" and "1" with "SB"
-    # df['Size Status'] = df['Size Status'].replace({0: 'OTSB', 1: 'SB'})
+    # Within Size Status column, replace "0" with "OTSB" and "1" with "SB"
+    df['Size Status'] = df['Size Status'].replace({0: 'OTSB', 1: 'SB'})
     
     # Rename column "Small Business Dollars" to "SB Dollars"
     df = df.rename(columns={"Small Business Dollars": "SB Dollars"})
         
-    # Ensure the NAICS code is a string and only first six digits are used
-    df['NAICS'] = df['NAICS'].astype(str).str[:6]
+    # # Ensure the NAICS code is a string and only first six digits are used
+    # df['NAICS'] = df['NAICS'].astype(str).str[:6]
     
     # Convert the 'Expiration' column to datetime to match format with today_date and make it only 10 characters long
     df['Expiration'] = df['Expiration'].str[:10]
@@ -132,7 +132,9 @@ def transform_army_data(interim_file, processed_folder: str):
     
     # Within Size Status column, replace any values > 0 with 1
     df['Size Status'] = df['Size Status'].apply(lambda x: 1 if x > 0 else 0)
-    # df['Size Status'] = df['Size Status'].replace({0: 'OTSB', 1: 'SB'})
+       
+    # Within Size Status column, replace "0" with "OTSB" and "1" with "SB"
+    df['Size Status'] = df['Size Status'].replace({0: 'OTSB', 1: 'SB'})
     
     # Rename column "Small Business Dollars" to "SB Dollars"
     df = df.rename(columns={"Small Business Dollars": "SB Dollars"})
@@ -143,8 +145,8 @@ def transform_army_data(interim_file, processed_folder: str):
     #Remove rows where "Size Status" is 0 and SB Dollars is < 10000 (less than $10,000 = Micro Purchase)
     df = df[~((df['Size Status'] == 0) & (df['SB Dollars'] < 10000))]
         
-    # Ensure the NAICS code is a string and only first six digits are used
-    df['NAICS'] = df['NAICS'].astype(str).str[:6]
+    # # Ensure the NAICS code is a string and only first six digits are used
+    # df['NAICS'] = df['NAICS'].astype(str).str[:6]
     
     #Remove all rows where the "Contract Action Type" is "MODIFICATION", "SATOC", and "MATOC"
     df = df[~df['Contract Action Type'].str.upper().isin(["MODIFICATION", "SATOC", "MATOC"])]
@@ -174,20 +176,23 @@ def insight_unrestricted_sb_awards(baseline_file, insight_folder_name) -> None:
     # Define the cleansed data source file to create a DataFrame (df)
     df = pd.read_csv(baseline_file)
     
+    # Makre sure NAICS column is a string and only the first six characters are used and strip anything after six characters
+    df['NAICS'] = df['NAICS'].astype(str).str[:6]
+    
+    # Convert the "SB Dollars" column to currency format
+    df['SB Dollars'] = df['SB Dollars'].map('${:,.2f}'.format)
+    
     #Remove all rows where the "Contract Action Type" is "MODIFICATION", "SATOC", and "MATOC"
     df = df[~df['Contract Action Type'].str.upper().isin(["MODIFICATION", "SATOC", "MATOC"])]
     
-    #  # Within Size Status column, replace "0" with "OTSB" and "1" with "SB"
-    # df['Size Status'] = df['Size Status'].replace({0: 'OTSB', 1: 'SB'})
-   
     # Remove any rows that are not "NO SET ASIDE USED" or blank in the "10N Type Set Aside Description" column
     df = df[df['Type Set Aside Description'].isin(["NO SET ASIDE USED", ""])]
     
     # Remove any rows with Months reaminining less than 6 months and more than 18 months
     df = df[(df['Months Remaining'] >= common_settings['min_months_remaining']) & (df['Months Remaining'] <= common_settings['max_months_remaining'])]
     
-    # Remove any rows with 0 in the "Size Status"
-    df = df[df['Size Status'] != 0]
+    # Remove any rows with "OTSB" in the "Size Status"
+    df = df[df['Size Status'] != 'OTSB']
     
     # Sort "Months Remaining" in ascending order
     df = df.sort_values(by='Months Remaining', ascending=True)
@@ -210,11 +215,14 @@ def insight_sbsa(baseline_file, insight_folder_name) -> None:
     # Define the cleansed data source file to create a DataFrame (df)
     df = pd.read_csv(baseline_file)
     
+    # Makre sure NAICS column is a string and only the first six characters are used and strip anything after six characters
+    df['NAICS'] = df['NAICS'].astype(str).str[:6]
+    
+    # Convert the "SB Dollars" column to currency format
+    df['SB Dollars'] = df['SB Dollars'].map('${:,.2f}'.format)
+    
     #Remove all rows where the "Contract Action Type" is "MODIFICATION", "SATOC", and "MATOC"
     df = df[~df['Contract Action Type'].str.upper().isin(["MODIFICATION", "SATOC", "MATOC"])]
-    
-    #  # Within Size Status column, replace "0" with "OTSB" and "1" with "SB"
-    # df['Size Status'] = df['Size Status'].replace({0: 'OTSB', 1: 'SB'})
    
     # Remove any rows that contain "NO SET ASIDE USED" in the "Type Set Aside Description" column
     df = df[~df['Type Set Aside Description'].isin(["NO SET ASIDE USED"])]
@@ -222,8 +230,8 @@ def insight_sbsa(baseline_file, insight_folder_name) -> None:
     # Remove any rows with Months reaminining less than 6 months and more than 18 months
     df = df[(df['Months Remaining'] >= common_settings['min_months_remaining']) & (df['Months Remaining'] <= common_settings['max_months_remaining'])]
     
-    # Remove any rows with 0 in the "Size Status"
-    df = df[df['Size Status'] != 0]
+    # Remove any rows with "OTSB" in the "Size Status"
+    df = df[df['Size Status'] != 'OTSB']
     
     # Sort "Months Remaining" in ascending order
     df = df.sort_values(by='Months Remaining', ascending=True)
@@ -245,11 +253,14 @@ def insight_8a_exit(baseline_file, insight_folder_name) -> None:
     # Define the cleansed data source file to create a DataFrame (df)
     df = pd.read_csv(baseline_file)
     
+    # Makre sure NAICS column is a string and only the first six characters are used and strip anything after six characters
+    df['NAICS'] = df['NAICS'].astype(str).str[:6]
+    
+    # Convert the "SB Dollars" column to currency format
+    df['SB Dollars'] = df['SB Dollars'].map('${:,.2f}'.format)
+    
     #Remove all rows where the "Contract Action Type" is "MODIFICATION", "SATOC", and "MATOC"
     df = df[~df['Contract Action Type'].str.upper().isin(["MODIFICATION", "SATOC", "MATOC"])]
-    
-    #  # Within Size Status column, replace "0" with "OTSB" and "1" with "SB"
-    # df['Size Status'] = df['Size Status'].replace({0: 'OTSB', 1: 'SB'})
    
     # Remove any rows that are not "8(A) SOLE SOURCE" OR "8A COMPETED" in the "Type Set Aside Description" column
     df = df[df['Type Set Aside Description'].str.upper().isin(["8(A) SOLE SOURCE", "8A COMPETED"])]
@@ -278,8 +289,14 @@ def insight_unrestricted_otsb_awards(baseline_file, insight_folder_name) -> None
     # Define the cleansed data source file to create a DataFrame (df)
     df = pd.read_csv(baseline_file)
     
-    # Remove any rows with 1 in the "Size Status"
-    df = df[df['Size Status'] != 1]
+    # Makre sure NAICS column is a string and only the first six characters are used and strip anything after six characters
+    df['NAICS'] = df['NAICS'].astype(str).str[:6]
+    
+    # Convert the "SB Dollars" column to currency format
+    df['SB Dollars'] = df['SB Dollars'].map('${:,.2f}'.format)
+    
+    # Remove any rows with 'SB' in the "Size Status"
+    df = df[df['Size Status'] != 'SB']
     
     #Remove all rows where the "Contract Action Type" is "MODIFICATION", "SATOC", and "MATOC"
     df = df[~df['Contract Action Type'].str.upper().isin(["MODIFICATION", "SATOC", "MATOC"])]

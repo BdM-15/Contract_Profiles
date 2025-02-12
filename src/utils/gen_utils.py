@@ -1,5 +1,6 @@
 #General reusable functions
 import os, glob
+from docx.shared import Pt, RGBColor
 
 # This function finds the latest file in a folder based on the file pattern.  It will determine if the file is .xlsx or .csv and read the file accordingly.
 def find_latest_file(folder_path: str, file_pattern: str) -> str:
