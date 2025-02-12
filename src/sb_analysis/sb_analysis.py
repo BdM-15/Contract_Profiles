@@ -155,14 +155,14 @@ def check_acc_ri_awards(df_row, contract_no) -> str:
     Get the number of awards made by ACC-RI to small businesses based on the NAICS code from the current contract being processed.
 
     Args:
-    df (pd.DataFrame): The DataFrame containing the data to be processed.
+    df_row: The row of the contract being processed.
     contract_no (str): The contract number being processed.
 
     Returns:
     int: The number of awards made.
     """
-    # Select the 'NAICS' value from the DataFrame based on the current contract number being processed
-    naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
+     # Select the NAICS value from the DataFrame based on the current contract number being processed
+    naics = df_row['NAICS']
     
     # makre sure naics is a string and only the first six characters are used
     naics = str(naics)[:6]
@@ -174,11 +174,8 @@ def check_acc_ri_awards(df_row, contract_no) -> str:
     acc_ri_awards_df = acc_ri_awards_df[~acc_ri_awards_df['Contract Action Type'].str.upper().isin(["MODIFICATION", "MATOC", "SATOC"])]
    
     # Ensure the NAICS column is of the same type as naics and only six characters are used
-    acc_ri_awards_df['NAICS'] = acc_ri_awards_df['NAICS'].astype(type(naics)).str[:6]
-
-    # Ensure the Size Status column is of the same type as "SB"
-    acc_ri_awards_df['Size Status'] = acc_ri_awards_df['Size Status'].astype(str).str.strip()
-
+    acc_ri_awards_df['NAICS'] = acc_ri_awards_df['NAICS'].astype(type(naics)).str[:6] 
+    
     acc_ri_awards_df = acc_ri_awards_df.loc[(acc_ri_awards_df['NAICS'] == naics) & (acc_ri_awards_df['Size Status'] == "SB")]
 
     # If dataframe is empty return "0", else return the number of rows remaining after filter to get the award count
@@ -806,12 +803,11 @@ sb_profile_analysis_functions = {
     # "Strong NAICS" : check_strong_naics, #Top 30% of NAICS based on SB Dollars or SB Actions
     # "Weak NAICS" : check_weak_naics, #10th percentile of SB Dollars or SB Actions
     # "Socio SS Eligible" : check_socio_sole_source_eligible, # Check if the $ value is below the threshold ($4M SDVOSB, $4.5M all others)
-    # "ACC RI Awards" : check_acc_ri_awards, #Awards that went to SB under the identified NAICS
-    # "All ACC Awards" : check_all_acc_awards, #All awards made by ACC across the enterprise
     "Awardee SB" : check_if_awardee_sb,
     "Awardee Socio" : check_awardee_socioeconomic_status,
     "NMR Waiver Available" : check_if_nmr_waiver_available, #Does an NMR waiver exist based on NAICS
-    # "Financial Risk" : check_financial_risk, #Financial risk to industry based on distribution of SB awards under identified NAICS"
+    "ACC RI Awards" : check_acc_ri_awards, #Awards that went to SB under the identified NAICS
+    # "All ACC Awards" : check_all_acc_awards, #All awards made by ACC across the enterprise# "Financial Risk" : check_financial_risk, #Financial risk to industry based on distribution of SB awards under identified NAICS"
     "Modification No" : check_modification, #Check if the contract is a modification and get the most recent number
     # "PCF Cabinet" : check_pcf_cabinet_link, #Provide link to PCF Cabinet and return a str or hyperlink
     # "Forecast No" : check_forecast # Identify the forecast solicitation/PANCOC number

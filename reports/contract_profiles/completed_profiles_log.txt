@@ -64,3 +64,9 @@ Completed contracts location: C:\GitHub\Contract_Profiles\reports\contract_profi
 Completed profiles on 2025-02-12 16:16:20
 Completed contracts location: C:\GitHub\Contract_Profiles\reports\contract_profiles\insight_unrestricted_sb_awards
 
+Completed profiles on 2025-02-12 16:28:42
+Completed contracts location: C:\GitHub\Contract_Profiles\reports\contract_profiles\insight_unrestricted_sb_awards
+
+Completed profiles on 2025-02-12 16:31:16
+Completed contracts location: C:\GitHub\Contract_Profiles\reports\contract_profiles\insight_unrestricted_sb_awards
+
