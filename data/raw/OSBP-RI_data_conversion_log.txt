@@ -538,3 +538,33 @@ Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
 Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
 Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
 
+The raw data to for the OSBP Insights was converted on 2025-02-12 15:31:26
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\army_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\army_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-12 15:32:21
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-12 15:36:03
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\army_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\army_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-12 15:36:55
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-12 15:40:08
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\army_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\army_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-12 15:40:57
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+

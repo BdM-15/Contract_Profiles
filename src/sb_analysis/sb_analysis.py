@@ -5,7 +5,7 @@ def check_size_standard(df_row, contract_no) -> str:
     Check if the NAICS code value is present in the Size Standard listing (size_standard_list.xlsx).
 
     Args:
-    df (pd.DataFrame): The DataFrame containing the data to be processed.
+    df_row: The row of the contract being processed.
     contract_no (str): The contract number being processed.
 
     Returns:
@@ -41,8 +41,7 @@ def check_wosb_naics(df_row, contract_no) -> str:
     Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing (wosb_naics_list.xlsx).
 
     Args
-    Datframe (df): The NAICS value to be checked based on the current contract number being processed.  Should be insight_target.csv.
-    
+    df_row: The row of the contract being processed.    
     Contract_no (str): The contract number being processed in create_contract_profiles() function.
 
     Returns:
@@ -50,19 +49,17 @@ def check_wosb_naics(df_row, contract_no) -> str:
     """
     
     # Select the NAICS value from the DataFrame based on the current contract number being processed
-    naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
+    naics = df_row['NAICS']
+    
     # makre sure naics is a string and only the first six digits are used
     naics = str(naics)[:6]
         
     # Read the WOSB NAICS listing
-    wosb_naics_df = pd.read_csv(data_folders['wosb_naics_list'])
+    wosb_naics_df = pd.read_csv(get_file_path('wosb_naics', 'wosb_naics_list'))
     
-    # Remove any value after the six digit in the NAICS Code column
-    wosb_naics_df['NAICS Code'] = wosb_naics_df['NAICS Code'].astype(str).str[:6]
-    
-    # Make sure the "Set-aside" column is string type
-    wosb_naics_df['Set-aside'] = wosb_naics_df['Set-aside'].astype(str)
-    
+    # Ensure the NAICS column is of the same type as naics and only six characters are used
+    wosb_naics_df['NAICS Code'] = wosb_naics_df['NAICS Code'].astype(type(naics)).str[:6]
+
     # Check if naics is in the wosb_naics_df['NAICS Code'] column. If yes, return the value in the 'Set-aside' column. If no, return "No"
     if naics in wosb_naics_df['NAICS Code'].values:
         return wosb_naics_df.loc[wosb_naics_df['NAICS Code'] == naics, 'Set-aside'].values[0]
@@ -815,7 +812,7 @@ sb_profile_analysis_functions = {
     "Size Standard" : check_size_standard,
     # "Top NAICS" : check_top_naics, #Top 25 NIACS either by SB Dollars or SB Actions
     "Target NAICS" : check_targeted_naics, #NAICS identified by specific needs or objectives or rationales/logic
-    # "WOSB Eligible" : check_wosb_naics, # Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing
+    "WOSB Eligible" : check_wosb_naics, # Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing
     # "Strong NAICS" : check_strong_naics, #Top 30% of NAICS based on SB Dollars or SB Actions
     # "Weak NAICS" : check_weak_naics, #10th percentile of SB Dollars or SB Actions
     # "Socio SS Eligible" : check_socio_sole_source_eligible, # Check if the $ value is below the threshold ($4M SDVOSB, $4.5M all others)
