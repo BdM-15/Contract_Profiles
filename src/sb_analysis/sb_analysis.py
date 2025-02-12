@@ -78,8 +78,8 @@ def check_if_awardee_sb(df_row, contract_no) -> str:
     str: "SB" if the awardee is a small business, "No" otherwise.
     """
     
-    # Select the 'Size Status' value from the DataFrame based on the current contract number being processed
-    size_status = df.loc[df['Contract No'] == contract_no, 'Size Status'].values[0]
+    # Select the 'Size Status' value from the dataframe row based on the current contract number being processed
+    size_status = df_row['Size Status']
     
     # Check if the 'Size Status' value is "SB". If yes, return "Yes". If no, return "No"
     if size_status == "SB":
@@ -818,7 +818,7 @@ sb_profile_analysis_functions = {
     # "Socio SS Eligible" : check_socio_sole_source_eligible, # Check if the $ value is below the threshold ($4M SDVOSB, $4.5M all others)
     # "ACC RI Awards" : check_acc_ri_awards, #Awards that went to SB under the identified NAICS
     # "All ACC Awards" : check_all_acc_awards, #All awards made by ACC across the enterprise
-    # "Awardee SB" : check_if_awardee_sb,
+    "Awardee SB" : check_if_awardee_sb,
     # "Awardee Socio" : check_awardee_socioeconomic_status,
     # "NMR Waiver Available" : check_if_nmr_waiver_available, #Does an NMR waiver exist based on NAICS
     # "Financial Risk" : check_financial_risk, #Financial risk to industry based on distribution of SB awards under identified NAICS"
