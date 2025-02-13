@@ -1,4 +1,4 @@
-from src.dconfig import get_file_path, pd, np, re
+from src.dconfig import get_file_path, pd, np, re, common_settings
 
 def check_size_standard(df_row, contract_no) -> str:
     """
@@ -316,11 +316,11 @@ def check_targeted_naics(df_row, contract_no) -> str:
         # makre sure naics is a string and only the first two digits are used
         naics = str(naics)[:2]
         
-        # Define the targeted NAICS values.  Based on OSBP or Contracting goals.
-        targeted_naics = ['33', '51', '54']
+        # # Define the targeted NAICS values.  Based on OSBP or Contracting goals.
+        # targeted_naics = ['33', '51', '54']
         
         # Check if the 'NAICS' value is in the targeted_naics list. If yes, return "Yes". If no, return "No"
-        if naics in targeted_naics:
+        if naics in common_settings['targeted_naics']:
             return "Yes"
         else:
             return "No"
