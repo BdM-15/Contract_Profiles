@@ -339,54 +339,36 @@ def check_top_naics(df_row, contract_no) -> str:
     str:  If NAICS is present, return "Yes". Otherwise, return "No".
     """
     try:
-        cleansed_file_df = pd.read_csv(data_folders['cleansed_data_source_file'], usecols=['NAICS', 'Size Status', 'SB Dollars'])
-        
-        # Select the 'NAICS' value from the DataFrame based on the current contract number being processed
-        naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
-        
+        # Get the NAICS value from the df_row from the "NAICS" column
+        naics = df_row['NAICS']
+                
         # makre sure naics is a string and only the first six digits are used
         naics = str(naics)[:6]
         
-    
-        # Get the count for top 30% of NAICS based on SB Dollars or SB actions
-        top_naics_count = 25
+        # # Get the count for top 30% of NAICS based on SB Dollars or SB actions
+        # top_naics_count = 25
         
+        # Define a dataframe from the acc_ri_processed_data.csv file to get the top NAICS
+        top_naics_df = pd.read_csv(get_file_path('processed_data', 'acc_ri_processed_data'))
         
-        # Make sure the 'SB Dollars' column is numeric from the DataFrame argument (NOT THE FULL RAW CLEANSED FILE).  This value will be used to compare against the percentiles from the cleansed_file_df.
-        # Ensure 'SB Dollars' column is string before removing currency formatting
-        cleansed_file_df['SB Dollars'] = cleansed_file_df['SB Dollars'].astype(str)
-
-        # Remove currency formatting from the SB Dollars column
-        cleansed_file_df['SB Dollars'] = cleansed_file_df['SB Dollars'].str.replace('$', '').str.replace(',', '')
-
-        # Convert the SB Dollars column to numeric
-        cleansed_file_df['SB Dollars'] = pd.to_numeric(cleansed_file_df['SB Dollars'], errors='coerce')
+        # Ensure SB Dollars column to numeric
+        top_naics_df['SB Dollars'] = pd.to_numeric(top_naics_df['SB Dollars'], errors='coerce')
         
         # Ensure the 'NAICS' column is of the same type as naics and only six digits are used
-        cleansed_file_df['NAICS'] = cleansed_file_df['NAICS'].astype(str).str[:6].astype(type(naics))
+        top_naics_df['NAICS'] = top_naics_df['NAICS'].astype(type(naics)).str[:6]
         
-        # Filter the cleased_file_df based on the naics identified from the contract being processed and print the filtered result to check if it matches the expected rows
-        # filtered_df = cleansed_file_df.loc[(cleansed_file_df['NAICS'] == naics) & (cleansed_file_df['Size Status'] == "SB")]
-        filtered_df = cleansed_file_df.loc[(cleansed_file_df['Size Status'] == "SB")]
-        # print("Filtered DataFrame based on NAICS and Size Status:", filtered_df)
-        # print("")
+        # Filter the top_naics_df where the "Size Status" values are "SB"
+        top_naics_df = top_naics_df.loc[(top_naics_df['Size Status'] == "SB")]
         
-        # Define the targeted NAICS values based on the top 30% of unique NAICS based on total SB Dollars
-        filtered_df = filtered_df.groupby('NAICS').agg({'SB Dollars': 'sum'}).reset_index()
-        filtered_df = filtered_df.sort_values(by=['SB Dollars'], ascending=False)
-        top_naics_by_dollars = filtered_df['NAICS'].head(top_naics_count).tolist()
-        # print("Top NAICS by SB Dollars:", top_naics_by_dollars)
-        # print("")
-        
-        # Define the targeted NAICS values based on the top 30% of unique NAICS based on total SB Actions (determined by "Size Status" column).
-        filtered_df = cleansed_file_df.loc[(cleansed_file_df['Size Status'] == "SB")]
-        filtered_df = filtered_df.groupby('NAICS').agg({'Size Status': 'count'}).reset_index()
-        filtered_df = filtered_df.sort_values(by=['Size Status'], ascending=False)
-        top_naics_by_actions = filtered_df['NAICS'].head(top_naics_count).tolist()
-        # print("Top NAICS by SB Actions:", top_naics_by_actions)
-        # print("")
-        
-        # top_naics = ['541611', '541512', '541330']
+        # Define the targeted NAICS values based on the top 25 of unique NAICS based on total SB Dollars
+        top_naics_by_dollars_df = top_naics_df.groupby('NAICS').agg({'SB Dollars': 'sum'}).reset_index()
+        top_naics_by_dollars_df = top_naics_df.sort_values(by=['SB Dollars'], ascending=False)
+        top_naics_by_dollars = top_naics_df['NAICS'].head(common_settings['top_naics_count']).tolist()        
+                
+        # Define the targeted NAICS values based on the top 25 of unique NAICS based on "Size Status" column).
+        top_naics_by_actions_df = top_naics_df.groupby('NAICS').agg({'Size Status': 'count'}).reset_index()
+        top_naics_by_actions_df = top_naics_df.sort_values(by=['Size Status'], ascending=False)
+        top_naics_by_actions = top_naics_df['NAICS'].head(common_settings['top_naics_count']).tolist()
         
         # Check if the 'NAICS' value is in either top_naics_by_actions or top_naics_by_actions. If yes in either one, return "Yes". If not in either, return "No"
         if naics in top_naics_by_dollars or naics in top_naics_by_actions:
@@ -408,7 +390,7 @@ def check_strong_naics(df_row, contract_no) -> str:
     str:  If NAICS is present, return "Yes". Otherwise, return "No".
     """
     try:
-        cleansed_file_df = pd.read_csv(data_folders['cleansed_data_source_file'], usecols=['NAICS', 'Size Status', 'SB Dollars'])
+        top_naics_df = pd.read_csv(data_folders['cleansed_data_source_file'], usecols=['NAICS', 'Size Status', 'SB Dollars'])
         
         # Select the 'NAICS' value from the DataFrame based on the current contract number being processed
         naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
@@ -726,7 +708,7 @@ sb_profile_analysis_functions = {
     # "IT Buy" : check_it_buy, # Check NAICS desription to determine if it is an IT buy, search for specific keywords and return yes or no
     # "Strong Competition" : check_strong_competition, # Get a sense of average number of offerors against this NAICS (use all army data source file)
     "Size Standard" : check_size_standard,
-    # "Top NAICS" : check_top_naics, #Top 25 NIACS either by SB Dollars or SB Actions
+    "Top NAICS" : check_top_naics, #Top 25 NIACS either by SB Dollars or SB Actions
     "Target NAICS" : check_targeted_naics, #NAICS identified by specific needs or objectives or rationales/logic
     "WOSB Eligible" : check_wosb_naics, # Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing
     # "Strong NAICS" : check_strong_naics, #Top 30% of NAICS based on SB Dollars or SB Actions
