@@ -123,6 +123,12 @@ def generate_profiles(insight_file, completed_profiles_folder):
     
         profile.add_paragraph('')
     
+        # Create and populate the PCF and Foreast Link table
+        pcf_forecast_table = create_table(profile, 'PCF and Forecast Link', 4, [(0, 1)])
+        populate_table(pcf_forecast_table, df_row, df_row["Contract No"], {'1' : 'PCF Link', '2' : 'Forecast Link'}, 1, sb_profile_analysis_functions, False)
+        
+        profile.add_paragraph('')
+        
         # Create and populate the Small Business Profile Analysis table
         sb_profile_analysis_table = create_table(profile, 'Small Business Profile Analysis', 6, [(0, 5)])
         populate_table(sb_profile_analysis_table, df_row, df_row["Contract No"], sb_profile_analysis_elements, 3, sb_profile_analysis_functions, True)
