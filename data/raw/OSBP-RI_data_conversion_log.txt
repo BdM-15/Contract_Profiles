@@ -808,3 +808,53 @@ Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
 Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
 Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
 
+The raw data to for the OSBP Insights was converted on 2025-02-14 08:43:08
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\army_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\army_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-14 08:44:12
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-14 09:28:00
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\army_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\army_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-14 09:28:59
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-14 09:30:15
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\army_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\army_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-14 09:31:13
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-14 09:43:33
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\army_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\army_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-14 09:44:31
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-14 09:55:47
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\army_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\army_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
+The raw data to for the OSBP Insights was converted on 2025-02-14 09:56:58
+Raw data file: C:\GitHub\Contract_Profiles\data\raw\acc_ri_raw_data.xlsx
+Converted file: C:\GitHub\Contract_Profiles\data\interim\acc_ri_interim_data.csv
+Converted csv file location: C:\GitHub\Contract_Profiles\data\interim
+
