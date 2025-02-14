@@ -690,7 +690,7 @@ sb_profile_analysis_functions = {
     "Top NAICS" : check_top_naics, #Top 25 NIACS either by SB Dollars or SB Actions
     "Target NAICS" : check_targeted_naics, #NAICS identified by specific needs or objectives or rationales/logic
     "WOSB Eligible" : check_wosb_naics, # Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing
-    # "Strong NAICS" : check_strong_naics, #Top 30% of NAICS based on SB Dollars or SB Actions
+    "Strong NAICS" : check_strong_naics, #Top 30% of NAICS based on SB Dollars or SB Actions
     # "Weak NAICS" : check_weak_naics, #10th percentile of SB Dollars or SB Actions
     # "Socio SS Eligible" : check_socio_sole_source_eligible, # Check if the $ value is below the threshold ($4M SDVOSB, $4.5M all others)
     "Awardee SB" : check_if_awardee_sb,
