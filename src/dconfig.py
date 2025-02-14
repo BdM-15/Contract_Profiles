@@ -120,6 +120,6 @@ common_settings = {
     'max_months_remaining' : 24, # Maximum number of months remaining on a contract
     'min_months_remaining' : 6, # Minimum number of months remaining on a contract
     'targeted_naics' : ['33', '51', '54'], # Target NAICS for the project based on customer and DoD/Army objectives
-    'top_naics_count' : 25
-     
+    'top_naics_count' : 25, # Number of top NAICS to consider for analysis
+    'strong_naics_percentage' : .30, # Percentage of awards to be considered strong NAICS
 }
