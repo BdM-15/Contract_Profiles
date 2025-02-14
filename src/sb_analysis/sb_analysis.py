@@ -588,22 +588,19 @@ def check_it_buy(df_row, contract_no) -> str:
     """
     try:
         # Define the IT Buy keywords
-        it_buy_keywords = ['IT', 'INFORMATION TECHNOLOGY', 'TECHNOLOGY', 'SOFTWARE', 'HARDWARE', 'COMPUTER', 'NETWORK', 'CYBERSECURITY', 'CLOUD', 'DATA', 'ANALYTICS', 'AI', 'ARTIFICIAL INTELLIGENCE', 'MACHINE LEARNING', 'ML', 'IOT', 'INTERNET OF THINGS', 'BLOCKCHAIN', 'CRYPTO', 'CRYPTOCURRENCY', 'DIGITAL', 'ELECTRONIC', 'TELECOMMUNICATIONS', 'TELECOMM', 'TELECOM', 'TELEPHONE', 'TELEPHONY', 'TELEPHONIC', 'TELEPHONICS']
+        it_buy_keywords = ['IT', 'INFORMATION TECHNOLOGY', 'SOFTWARE', 'COMPUTER', 'NETWORK', 'CYBERSECURITY', 'CLOUD', 'DATA', 'ANALYTICS', 'AI', 'ARTIFICIAL INTELLIGENCE', 'MACHINE LEARNING', 'ML', 'IOT', 'INTERNET OF THINGS', 'BLOCKCHAIN', 'CRYPTO', 'CRYPTOCURRENCY', 'DIGITAL', 'TELECOMMUNICATIONS', 'TELECOMM', 'TELECOM', 'TELEPHONE', 'TELEPHONY', 'TELEPHONIC', 'TELEPHONICS']
         
         # Use columns 'NAICS', 'NAICS Description', 'PSC Decription', 'OMB Level 1', and 'OMB Level 2' to check for IT Buy keywords from df argument
-        naics_description = df.loc[df['Contract No'] == contract_no, 'NAICS Description'].values[0]
-        psc_description = df.loc[df['Contract No'] == contract_no, 'PSC Description'].values[0]
-        omb_level_1 = df.loc[df['Contract No'] == contract_no, 'OMB Level 1'].values[0]
-        omb_level_2 = df.loc[df['Contract No'] == contract_no, 'OMB Level 2'].values[0]
+        naics_description = df_row['NAICS Description']
+        psc_description = df_row['PSC Description']
+        omb_level_1 = df_row['OMB Level 1']
+        omb_level_2 = df_row['OMB Level 2']
         
-        # # Check if any of the IT Buy keywords are present in the 'NAICS Description', 'PSC Description', 'OMB Level 1', or 'OMB Level 2' columns
-        # if any(keyword in naics_description.upper() for keyword in it_buy_keywords) or any(keyword in psc_description.upper() for keyword in it_buy_keywords) or any(keyword in omb_level_1.upper() for keyword in it_buy_keywords) or any(keyword in omb_level_2.upper() for keyword in it_buy_keywords):
-        #     return "Yes"
-        # else:
-        #     return "No"
+        # Create a regex pattern to match each keyword identified separated by the commas without splitting each keyword
+        pattern = r'\b(?:' + '|'.join(it_buy_keywords) + r')\b'
         
         # Create a regex pattern to match whole words only
-        pattern = r'\b(?:' + '|'.join(re.escape(keyword) for keyword in it_buy_keywords) + r')\b'
+        # pattern = r'\b(?:' + '|'.join(re.escape(keyword) for keyword in it_buy_keywords) + r')\b'
         
         # Check if any of the IT Buy keywords are present in the 'NAICS Description', 'PSC Description', 'OMB Level 1', or 'OMB Level 2' columns
         if (re.search(pattern, naics_description, re.IGNORECASE) or
@@ -662,7 +659,7 @@ def check_socio_sole_source_eligible(df_row, contract_no) -> str:
         return f'Error: {e}'
 
 sb_profile_analysis_functions = {
-    # "IT Buy" : check_it_buy, # Check NAICS desription to determine if it is an IT buy, search for specific keywords and return yes or no
+    "IT Buy" : check_it_buy, # Check NAICS desription to determine if it is an IT buy, search for specific keywords and return yes or no
     # "Strong Competition" : check_strong_competition, # Get a sense of average number of offerors against this NAICS (use all army data source file)
     "Size Standard" : check_size_standard,
     "Top NAICS" : check_top_naics, #Top 25 NIACS either by SB Dollars or SB Actions
