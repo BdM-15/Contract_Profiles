@@ -404,7 +404,7 @@ def check_strong_naics(df_row, contract_no) -> str:
         naics_count = strong_naics_df['NAICS'].nunique()
 
         # Get the count for top 30% of NAICS based on SB Dollars or SB actions
-        strong_naics_count = int(naics_count * common_settings['strong_naics_percentage'])
+        strong_naics_count = int(naics_count * common_settings['naics_strength_percentage'])
         
         # Ensure the 'NAICS' column is of the same type as naics and only six digits are used
         strong_naics_df['NAICS'] = strong_naics_df['NAICS'].astype(type(naics)).str[:6]
@@ -443,59 +443,37 @@ def check_weak_naics(df_row, contract_no) -> str:
     str:  If NAICS is present, return "Yes". Otherwise, return "No".
     """
     try:
-        cleansed_file_df = pd.read_csv(data_folders['cleansed_data_source_file'], usecols=['NAICS', 'Size Status', 'SB Dollars'])
-        
-        # Select the 'NAICS' value from the DataFrame based on the current contract number being processed
-        naics = df.loc[df['Contract No'] == contract_no, 'NAICS'].values[0]
-        
+        # Get the NAICS value from the df_row from the "NAICS" column
+        naics = df_row['NAICS']
+                
         # makre sure naics is a string and only the first six digits are used
         naics = str(naics)[:6]
         
+        # Define a dataframe from the acc_ri_processed_data.csv file to get the weak NAICS
+        weak_naics_df = pd.read_csv(get_file_path('processed_data', 'acc_ri_processed_data'))
+        
         # Idnentify the number of uniqe values in the 'NAICS' column by count !!MAY HAVE TO ALSO KEEP IT THE LAST 3 YEARS OF DATA!!
-        naics_count = cleansed_file_df['NAICS'].nunique()
-        # print("Number of unique NAICS values:", naics_count)
-        # print("")
+        naics_count = weak_naics_df['NAICS'].nunique()
         
         # Get the count for top 30% of NAICS based on SB Dollars or SB actions
-        weak_naics_count = int(naics_count * .3)
-        # print("Top 30% of NAICS count:", strong_naics_count)
-        # print("")
-        
-        # Make sure the 'SB Dollars' column is numeric from the DataFrame argument (NOT THE FULL RAW CLEANSED FILE).  This value will be used to compare against the percentiles from the cleansed_file_df.
-        # Ensure 'SB Dollars' column is string before removing currency formatting
-        cleansed_file_df['SB Dollars'] = cleansed_file_df['SB Dollars'].astype(str)
-
-        # Remove currency formatting from the SB Dollars column
-        cleansed_file_df['SB Dollars'] = cleansed_file_df['SB Dollars'].str.replace('$', '').str.replace(',', '')
-
-        # Convert the SB Dollars column to numeric
-        cleansed_file_df['SB Dollars'] = pd.to_numeric(cleansed_file_df['SB Dollars'], errors='coerce')
+        weak_naics_count = int(naics_count * common_settings['naics_strength_percentage'])
         
         # Ensure the 'NAICS' column is of the same type as naics and only six digits are used
-        cleansed_file_df['NAICS'] = cleansed_file_df['NAICS'].astype(str).str[:6].astype(type(naics))
+        weak_naics_df['NAICS'] = weak_naics_df['NAICS'].astype(type(naics)).str[:6]
         
-        # Filter the cleased_file_df based on the naics identified from the contract being processed and print the filtered result to check if it matches the expected rows
-        # filtered_df = cleansed_file_df.loc[(cleansed_file_df['NAICS'] == naics) & (cleansed_file_df['Size Status'] == "SB")]
-        filtered_df = cleansed_file_df.loc[(cleansed_file_df['Size Status'] == "SB")]
-        # print("Filtered DataFrame based on NAICS and Size Status:", filtered_df)
-        # print("")
+        # Group by 'NAICS' and aggregate 'Size Status' and 'SB Dollars'
+        weak_naics_df = weak_naics_df.groupby('NAICS').agg({
+            'Size Status': 'count',
+            'SB Dollars': 'sum'
+        }).reset_index()
         
-        # Define the targeted NAICS values based on the top 30% of unique NAICS based on total SB Dollars
-        filtered_df = filtered_df.groupby('NAICS').agg({'SB Dollars': 'sum'}).reset_index()
-        filtered_df = filtered_df.sort_values(by=['SB Dollars'], ascending=True)
-        weak_naics_by_dollars = filtered_df['NAICS'].head(weak_naics_count).tolist()
-        # print("Top NAICS by SB Dollars:", strong_naics_by_dollars)
-        # print("")
+        # Sort by 'Size Status' and get the top 30% NAICS by actions
+        weak_naics_df = weak_naics_df.sort_values(by=['Size Status'], ascending=True)
+        weak_naics_by_actions = weak_naics_df['NAICS'].head(weak_naics_count).tolist()
         
-        # Define the targeted NAICS values based on the top 30% of unique NAICS based on total SB Actions (determined by "Size Status" column).
-        filtered_df = cleansed_file_df.loc[(cleansed_file_df['Size Status'] == "SB")]
-        filtered_df = filtered_df.groupby('NAICS').agg({'Size Status': 'count'}).reset_index()
-        filtered_df = filtered_df.sort_values(by=['Size Status'], ascending=True)
-        weak_naics_by_actions = filtered_df['NAICS'].head(weak_naics_count).tolist()
-        # print("Top NAICS by SB Actions:", strong_naics_by_actions)
-        # print("")
-        
-        # top_naics = ['541611', '541512', '541330']
+        # Sort by 'SB Dollars' and get the top 30% NAICS by dollars
+        weak_naics_df = weak_naics_df.sort_values(by=['SB Dollars'], ascending=True)
+        weak_naics_by_dollars = weak_naics_df['NAICS'].head(weak_naics_count).tolist()
         
         # Check if the 'NAICS' value is in either top_naics_by_actions or top_naics_by_actions. If yes in either one, return "Yes". If not in either, return "No"
         if naics in weak_naics_by_dollars or naics in weak_naics_by_actions:
@@ -691,7 +669,7 @@ sb_profile_analysis_functions = {
     "Target NAICS" : check_targeted_naics, #NAICS identified by specific needs or objectives or rationales/logic
     "WOSB Eligible" : check_wosb_naics, # Check if the NAICS code value is present in the Underrepresented WOSB NAICS listing
     "Strong NAICS" : check_strong_naics, #Top 30% of NAICS based on SB Dollars or SB Actions
-    # "Weak NAICS" : check_weak_naics, #10th percentile of SB Dollars or SB Actions
+    "Weak NAICS" : check_weak_naics, #10th percentile of SB Dollars or SB Actions
     # "Socio SS Eligible" : check_socio_sole_source_eligible, # Check if the $ value is below the threshold ($4M SDVOSB, $4.5M all others)
     "Awardee SB" : check_if_awardee_sb,
     "Awardee Socio" : check_awardee_socioeconomic_status,
